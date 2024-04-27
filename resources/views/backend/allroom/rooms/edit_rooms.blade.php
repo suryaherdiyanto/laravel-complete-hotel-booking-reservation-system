@@ -1,9 +1,9 @@
 @extends('admin.admin_dashboard')
-@section('admin') 
+@section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <div class="page-content">
-			 
+
 				<div class="container">
 					<div class="main-body">
 						<div class="row">
@@ -32,32 +32,42 @@
                     </div>
                 </a>
             </li>
-            
+
         </ul>
         <div class="tab-content py-3">
             <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
-              
+
                 <div class="col-xl-12 mx-auto">
-						
+
                     <div class="card">
                         <div class="card-body p-4">
                             <h5 class="mb-4">Update Room </h5>
 
     <form class="row g-3" action="{{ route('update.room',$editData->id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
 
         <div class="col-md-4">
             <label for="input1" class="form-label">Room Type Name </label>
-            <input type="text" name="roomtype_id" class="form-control" id="input1" value="{{ $editData['type']['name'] }}" >
+            <input type="text" name="roomtype" class="form-control {{ $errors->has('roomtype') ? 'is-invalid':'' }}" id="input1" value="{{ $editData['type']['name'] }}" >
+            @error('roomtype')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
         <div class="col-md-4">
             <label for="input2" class="form-label">Total Adult</label>
-            <input type="text" name="total_adult" class="form-control" id="input2"  value="{{ $editData->total_adult }}">
+            <input type="text" name="total_adult" class="form-control {{ $errors->has('total_adult') ? 'is-invalid':'' }}" id="input2"  value="{{ $editData->total_adult }}">
+            @error('total_adult')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-4">
             <label for="input2" class="form-label">Total Child </label>
-            <input type="text" name="total_child" class="form-control" id="input2" value="{{ $editData->total_child }}">
+            <input type="text" name="total_child" class="form-control {{ $errors->has('total_child') ? 'is-invalid':'' }}" id="input2" value="{{ $editData->total_child }}">
+            @error('total_child')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
 
@@ -65,69 +75,69 @@
             <label for="input3" class="form-label">Main Image </label>
             <input type="file" name="image" class="form-control" id="image"  >
 
-            <img id="showImage" src="{{ (!empty($editData->image)) ? url('upload/roomimg/'.$editData->image) : url('upload/no_image.jpg') }}" alt="Admin" class="bg-primary" width="70" height="50"> 
+            <img id="showImage" src="{{ $editData->imageUrl() }}" alt="Admin" class="bg-primary" width="70" height="50">
         </div>
 
 
-
-
-        <div class="col-md-6">
-            <label for="input4" class="form-label">Gallery Image </label>
-            <input type="file" name="multi_img[]" class="form-control" multiple id="multiImg" accept="image/jpeg, image/jpg, image/gif, image/png" >
-
-            @foreach ($multiimgs as $item)
-
-            <img src="{{ (!empty($item->multi_img)) ? url('upload/roomimg/multi_img/'.$item->multi_img) : url('upload/no_image.jpg') }}" alt="Admin" class="bg-primary" width="60"> 
-
-              <a href="{{ route('multi.image.delete',$item->id) }}"><i class="lni lni-close"></i> </a>  
-
-            @endforeach
-
-
-            <div class="row" id="preview_img"></div>
-        </div>
 
 
         <div class="col-md-3">
             <label for="input1" class="form-label">Room Price  </label>
-            <input type="text" name="price" class="form-control" id="input1" value="{{ $editData->price }}" >
+            <input type="text" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid':'' }}" id="input1" value="{{ $editData->price }}" >
+            @error('price')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Size </label>
-            <input type="text" name="size" class="form-control" id="input2"  value="{{ $editData->size }}">
+            <input type="text" name="size" class="form-control {{ $errors->has('size') ? 'is-invalid':'' }}" id="input2"  value="{{ $editData->size }}">
+            @error('size')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Discount ( % )</label>
-            <input type="text" name="discount" class="form-control" id="input2"  value="{{ $editData->discount }}">
+            <input type="text" name="discount" class="form-control {{ $errors->has('discount') ? 'is-invalid':'' }}" id="input2"  value="{{ $editData->discount }}">
+            @error('discount')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Room Capacity </label>
-            <input type="text" name="room_capacity" class="form-control" id="input2" value="{{ $editData->room_capacity }}">
+            <input type="text" name="room_capacity" class="form-control {{ $errors->has('room_capacity') ? 'is-invalid':'' }}" id="input2" value="{{ $editData->room_capacity }}">
+            @error('room_capacity')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-6">
             <label for="input7" class="form-label">Room View </label>
-            <select name="view" id="input7" class="form-select">
-                <option selected="">Choose...</option>
+            <select name="view" id="input7" class="form-select {{ $errors->has('room_capacity') ? 'is-invalid':'' }}">
+                <option selected="" value="">Choose...</option>
                 <option value="Sea View" {{ $editData->view == 'Sea View'?'selected':''}}>Sea View </option>
                 <option value="Hill View" {{ $editData->view == 'Hill View'?'selected':''}}>Hill View </option>
-               
             </select>
+            @error('room_capacity')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-6">
             <label for="input7" class="form-label">Bed Style</label>
-            <select name="bed_style" id="input7" class="form-select">
+            <select name="bed_style" id="input7" class="form-select {{ $errors->has('bed_style') ? 'is-invalid':'' }}">
                 <option selected="">Choose...</option>
                 <option value="Queen Bed" {{ $editData->bed_style == 'Queen Bed'?'selected':''}}> Queen Bed </option>
                 <option value="Twin Bed" {{ $editData->bed_style == 'Twin Bed'?'selected':''}}>Twin Bed </option>
                 <option value="King Bed" {{ $editData->bed_style == 'King Bed'?'selected':''}}>King Bed </option>
             </select>
+            @error('bed_style')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
-  
+
         <div class="col-md-12">
             <label for="input11" class="form-label">Short Description </label>
             <textarea name="short_desc" class="form-control" id="input11" placeholder="Address ..." rows="3">{{ $editData->short_desc }}</textarea>
@@ -151,29 +161,29 @@
                         <select name="facility_name[]" id="facility_name" class="form-control">
                               <option value="">Select Facility</option>
                               <option value="Complimentary Breakfast" {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}>Complimentary Breakfast</option>
-             <option value="32/42 inch LED TV"  {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}> 32/42 inch LED TV</option>
-           
+             <option value="32/42 inch LED TV"  {{$item->facility_name == '32/42 inch LED TV'?'selected':''}}> 32/42 inch LED TV</option>
+
             <option value="Smoke alarms"  {{$item->facility_name == 'Smoke alarms'?'selected':''}}>Smoke alarms</option>
-           
-            <option value="Minibar" {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}> Minibar</option>
-           
+
+            <option value="Minibar" {{$item->facility_name == 'Minibar'?'selected':''}}> Minibar</option>
+
             <option value="Work Desk"  {{$item->facility_name == 'Work Desk'?'selected':''}}>Work Desk</option>
-           
+
             <option value="Free Wi-Fi" {{$item->facility_name == 'Free Wi-Fi'?'selected':''}}>Free Wi-Fi</option>
-           
+
             <option value="Safety box" {{$item->facility_name == 'Safety box'?'selected':''}} >Safety box</option>
-           
+
             <option value="Rain Shower" {{$item->facility_name == 'Rain Shower'?'selected':''}} >Rain Shower</option>
-           
+
             <option value="Slippers" {{$item->facility_name == 'Slippers'?'selected':''}} >Slippers</option>
-           
+
             <option value="Hair dryer" {{$item->facility_name == 'Hair dryer'?'selected':''}} >Hair dryer</option>
-           
+
             <option value="Wake-up service"  {{$item->facility_name == 'Wake-up service'?'selected':''}}>Wake-up service</option>
-           
+
             <option value="Laundry & Dry Cleaning" {{$item->facility_name == 'Laundry & Dry Cleaning'?'selected':''}} >Laundry & Dry Cleaning</option>
-            
-            <option value="Electronic door lock"  {{$item->facility_name == 'Electronic door lock'?'selected':''}}>Electronic door lock</option> 
+
+            <option value="Electronic door lock"  {{$item->facility_name == 'Electronic door lock'?'selected':''}}>Electronic door lock</option>
                         </select>
                      </div>
                      <div class="col-md-4">
@@ -184,9 +194,9 @@
                      </div>
                   </div>
                </div>
-           
+
                @empty
-           
+
                     <div class="basic_facility_section_remove" id="basic_facility_section_remove">
                         <div class="row add_item">
                             <div class="col-md-6">
@@ -205,40 +215,40 @@
             <option value="Hair dryer" >Hair dryer</option>
             <option value="Wake-up service" >Wake-up service</option>
             <option value="Laundry & Dry Cleaning" >Laundry & Dry Cleaning</option>
-            <option value="Electronic door lock" >Electronic door lock</option> 
+            <option value="Electronic door lock" >Electronic door lock</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group" style="padding-top: 30px;">
                     <a class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></a>
-           
+
                    <span class="btn btn-danger removeeventmore"><i class="lni lni-circle-minus"></i></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-           
+
                @endforelse
-           
-           
-           
-                                </div> 
+
+
+
+                                </div>
                              </div>
                              <br>
-           
 
- 
 
- 
+
+
+
         <div class="col-md-12">
             <div class="d-md-flex d-grid align-items-center gap-3">
-                <button type="submit" class="btn btn-primary px-4">Save Changes</button> 
+                <button type="submit" class="btn btn-primary px-4">Save Changes</button>
             </div>
         </div>
     </form>
                         </div>
                     </div>
- 
+
                 </div>
 
 
@@ -250,7 +260,7 @@
 
 
 
- 
+
 
 
 
@@ -271,24 +281,24 @@
                     <label for="input2" class="form-label">Room No </label>
                     <input type="text" name="room_no" class="form-control" id="input2" >
                 </div>
-        
+
                 <div class="col-md-4">
                     <label for="input7" class="form-label">Status </label>
                     <select name="status" id="input7" class="form-select">
                         <option selected="">Select Status...</option>
                         <option value="Active">Active </option>
                         <option value="Inactive">Inactive  </option>
-                       
+
                     </select>
-                </div> 
+                </div>
 
                 <div class="col-md-4">
-                    
+
                     <button type="submit" class="btn btn-success" style="margin-top: 28px;">Save</button>
-                    
-                </div> 
-            </div> 
-            </form> 
+
+                </div>
+            </div>
+            </form>
         </div>
 
 
@@ -297,24 +307,24 @@
                 <tr>
                     <th scope="col">Room Number</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th> 
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-          
-                @foreach ($allroomNo as $item) 
-               
-                <tr> 
+
+                @foreach ($allroomNo as $item)
+
+                <tr>
                     <td>{{ $item->room_no }}</td>
                     <td>{{ $item->status }}</td>
                     <td>
     <a href="{{ route('edit.roomno',$item->id) }}" class="btn btn-warning px-3 radius-30"> Edit</a>
-    <a href="{{ route('delete.roomno',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>  
+    <a href="{{ route('delete.roomno',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
 
                     </td>
                 </tr>
                 @endforeach
-                
+
             </tbody>
         </table>
 
@@ -327,13 +337,13 @@
 
 
                     </div>
-                    </div> 
+                    </div>
 
 
 
-            </div> 
+            </div>
             {{-- // end PrimaryProfile --}}
-            
+
 
 
 
@@ -345,14 +355,14 @@
 
 
 
-						 
- 
+
+
 						</div>
 					</div>
 				</div>
  </div>
 
- 
+
         <script type="text/javascript">
 
         $(document).ready(function(){
@@ -365,9 +375,9 @@
             });
         });
 
-        </script>   
-        
-        
+        </script>
+
+
         <!--------===Show MultiImage ========------->
 <script>
     $(document).ready(function(){
@@ -375,21 +385,21 @@
         if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
         {
             var data = $(this)[0].files; //this file data
-             
+
             $.each(data, function(index, file){ //loop though each file
                 if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
                     var fRead = new FileReader(); //new filereader
                     fRead.onload = (function(file){ //trigger function on successful read
                     return function(e) {
                         var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(100)
-                    .height(80); //create image element 
+                    .height(80); //create image element
                         $('#preview_img').append(img); //append image to output element
                     };
                     })(file);
                     fRead.readAsDataURL(file); //URL representing the file's data.
                 }
             });
-             
+
         }else{
             alert("Your browser doesn't support File API!"); //if File API is absent
         }
@@ -420,7 +430,7 @@
   <option value="Hair dryer" >Hair dryer</option>
   <option value="Wake-up service" >Wake-up service</option>
   <option value="Laundry & Dry Cleaning" >Laundry & Dry Cleaning</option>
-  <option value="Electronic door lock" >Electronic door lock</option> 
+  <option value="Electronic door lock" >Electronic door lock</option>
                    </select>
                 </div>
                 <div class="form-group col-md-6" style="padding-top: 20px">
@@ -432,7 +442,7 @@
        </div>
     </div>
  </div>
- 
+
  <script type="text/javascript">
     $(document).ready(function(){
        var counter = 0;
