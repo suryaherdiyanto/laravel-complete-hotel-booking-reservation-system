@@ -374,6 +374,35 @@
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });
+            $('#roomnoHide').validate({
+                rules: {
+                    room_no: {
+                        required : true,
+                    },
+                    status: {
+                        required : true
+                    }
+                },
+                messages :{
+                    room_no: {
+                        required : 'Room no is required',
+                    },
+                    status: {
+                        required : 'Please select status'
+                    }
+                },
+                errorElement : 'span',
+                errorPlacement: function (error,element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight : function(element, errorClass, validClass){
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight : function(element, errorClass, validClass){
+                    $(element).removeClass('is-invalid');
+                },
+            });
         });
 
         </script>

@@ -119,4 +119,14 @@ class RoomController extends Controller
 
         return redirect()->back()->with($this->successNotif);
     }
+
+    public function StoreRoomNumber($id, Request $request)
+    {
+        $room = Room::findOrFail($id);
+
+        $room->room_numbers()->create($request->only(['room_no', 'status', 'room_type_id']));
+
+        $this->successNotif['message'] = 'Room number successfully added!';
+        return redirect()->back()->with($this->successNotif);
+    }
 }
