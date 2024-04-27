@@ -38,16 +38,25 @@
 
         <div class="col-md-4">
             <label for="input1" class="form-label">Room Type Name </label>
-            <input type="text" name="roomtype_id" class="form-control" id="input1" value="" >
+            <input type="text" name="roomtype_id" class="form-control {{ $errors->has('roomtype_id') ? 'is-invalid':'' }}" id="input1" value="" >
+            @error('roomtype_id')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
         <div class="col-md-4">
             <label for="input2" class="form-label">Total Adult</label>
-            <input type="text" name="total_adult" class="form-control" id="input2"  value="">
+            <input type="text" name="total_adult" class="form-control {{ $errors->has('total_adult') ? 'is-invalid':'' }}" id="input2"  value="">
+            @error('total_adult')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-4">
             <label for="input2" class="form-label">Total Child </label>
-            <input type="text" name="total_child" class="form-control" id="input2" value="">
+            <input type="text" name="total_child" class="form-control {{ $errors->has('total_child') ? 'is-invalid':'' }}" id="input2" value="">
+            @error('total_child')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
 
@@ -61,41 +70,59 @@
 
         <div class="col-md-3">
             <label for="input1" class="form-label">Room Price  </label>
-            <input type="text" name="price" class="form-control" id="input1" value="" >
+            <input type="text" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid':'' }}" id="input1" value="" >
+            @error('price')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Size </label>
-            <input type="text" name="size" class="form-control" id="input2"  value="">
+            <input type="text" name="size" class="form-control {{ $errors->has('price') ? 'is-invalid':'' }}" id="input2"  value="">
+            @error('price')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Discount ( % )</label>
-            <input type="text" name="discount" class="form-control" id="input2"  value="">
+            <input type="text" name="discount" class="form-control {{ $errors->has('discount') ? 'is-invalid':'' }}" id="input2"  value="">
+            @error('discount')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Room Capacity </label>
-            <input type="text" name="room_capacity" class="form-control" id="input2" value="">
+            <input type="text" name="room_capacity" class="form-control {{ $errors->has('room_capacity') ? 'is-invalid':'' }}" id="input2" value="">
+            @error('room_capacity')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-6">
             <label for="input7" class="form-label">Room View </label>
-            <select name="view" id="input7" class="form-select">
+            <select name="view" id="input7" class="form-select {{ $errors->has('view') ? 'is-invalid':'' }}">
                 <option selected="">Choose...</option>
                 <option value="Sea View">Sea View </option>
                 <option value="Hill View">Hill View </option>
             </select>
+            @error('view')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-6">
             <label for="input7" class="form-label">Bed Style</label>
-            <select name="bed_style" id="input7" class="form-select">
+            <select name="bed_style" id="input7" class="form-select {{ $errors->has('bed_style') ? 'is-invalid':'' }}">
                 <option selected="">Choose...</option>
                 <option value="Queen Bed"> Queen Bed </option>
                 <option value="Twin Bed">Twin Bed </option>
                 <option value="King Bed">King Bed </option>
             </select>
+            @error('bed_style')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="col-md-12">
@@ -134,6 +161,9 @@
                             </div>
                         </div>
                     </div>
+                    @error('facility_name')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
         </div>
