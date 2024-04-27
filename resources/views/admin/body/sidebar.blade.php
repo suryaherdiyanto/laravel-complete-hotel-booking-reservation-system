@@ -20,7 +20,6 @@
             </a>
         </li>
 
-        @if(Auth::user()->can('team.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -38,9 +37,7 @@
                 @endif
             </ul>
         </li>
-        @endif
 
-        @if(Auth::user()->can('bookarea.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -55,7 +52,6 @@
 
             </ul>
         </li>
-        @endif
 
         <li class="menu-label">Booking Manage </li>
 
