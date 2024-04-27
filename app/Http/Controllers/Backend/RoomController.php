@@ -14,4 +14,9 @@ class RoomController extends Controller
 
         return view('backend.allroom.rooms.view_rooms', compact('rooms'));
     }
+
+    public function AddRoom()
+    {
+        return view('backend.allroom.rooms.add_room');
+    }
 }

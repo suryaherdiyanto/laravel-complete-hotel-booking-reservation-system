@@ -8,10 +8,10 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-	
+
 	<!--favicon-->
 	<link rel="icon" href="{{asset('backend/assets/images/favicon-32x32.png')}}" type="image/png"/>
-	<!--plugins--> 
+	<!--plugins-->
 	<link href="{{asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
 	<link href="{{asset('backend/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
 	<link href="{{asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
@@ -34,8 +34,8 @@
    <!-- toastr CSS -->
 
 	<!-- dataTables CSS -->
-   <link href="{{asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />	
-   <!-- dataTables CSS --> 
+   <link href="{{asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
+   <!-- dataTables CSS -->
 
 	<title>Admin Dashboard </title>
 </head>
@@ -66,14 +66,14 @@
 
 
 	<!-- search modal -->
-    
+
     <!-- end search modal -->
 
 
 
 
 	<!--start switcher-->
- 
+
 	<!--end switcher-->
 	<!-- Bootstrap JS -->
 	<script src="{{asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
@@ -116,9 +116,9 @@
 
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
-    break; 
+    break;
  }
- @endif 
+ @endif
 </script>
 
 <!--datatable JS-->
@@ -131,7 +131,7 @@
 	</script>
 <!--datatable JS-->
 
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/{{ env('TINYMCE_KEY', 'no-api-key') }}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
    tinymce.init({
      selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
