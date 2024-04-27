@@ -1,5 +1,5 @@
 @extends('admin.admin_dashboard')
-@section('admin') 
+@section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <div class="page-content">
@@ -15,13 +15,13 @@
 							</ol>
 						</nav>
 					</div>
-					 
+
 				</div>
 				<!--end breadcrumb-->
 				<div class="container">
 					<div class="main-body">
 						<div class="row">
-						 
+
     <div class="col-lg-8">
         <div class="card">
 
@@ -37,8 +37,8 @@
                         <input type="text" name="name" class="form-control"  />
                     </div>
                 </div>
-                
-                 
+
+
                 <div class="row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-9 text-secondary">
@@ -49,7 +49,7 @@
         </form>
 
         </div>
-            
+
 
 
     </div>
@@ -65,19 +65,19 @@
                         rules: {
                             name: {
                                 required : true,
-                            }, 
-                             
-                            
+                            },
+
+
                         },
                         messages :{
                             name: {
-                                required : 'Please Enter Team Name',
-                            }, 
-                             
-                             
-            
+                                required : 'Please Room Type  Name',
+                            },
+
+
+
                         },
-                        errorElement : 'span', 
+                        errorElement : 'span',
                         errorPlacement: function (error,element) {
                             error.addClass('invalid-feedback');
                             element.closest('.form-group').append(error);
@@ -90,7 +90,7 @@
                         },
                     });
                 });
-                
+
             </script>
 
 
@@ -106,9 +106,9 @@
             });
         });
 
-        </script>   
-        
-        
+        </script>
+
+
 
 
 @endsection
