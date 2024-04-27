@@ -35,6 +35,7 @@
 
         </ul>
         <div class="tab-content py-3">
+            <a href="{{ route('view.room') }}" class="btn btn-success mb-3">Back</a>
             <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
 
                 <div class="col-xl-12 mx-auto">
