@@ -35,7 +35,7 @@
                             <th>Sl</th>
                             <th>Room Type</th>
                             <th>Room Number</th>
-                            <th>Capacity</th>
+                            <th>Price</th>
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
@@ -45,11 +45,17 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td> {{ $item->type->name }}  </td>
-                            <td>{{ $item->room_no }}</td>
-                            <td>{{ $item->capacity }}</td>
-                            <td>{{ $item->image ?: url('upload/no_image.jpg') }}</td>
-                            <a href="{{ route('edit.room',$roo->id) }}" class="btn btn-warning px-3 radius-30"> Edit</a>
-                            <a href="{{ route('delete.room',$roo->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
+                            <td>{{ $item->room_no ?: 'No number' }}</td>
+                            <td>{{ $item->displayPrice() }}</td>
+                            <td>
+                                <img src="{{ $item->imageUrl() }}" width="92" alt="">
+                            </td>
+                            <td>
+                                <div class="btn btn-group">
+                                <a href="{{ route('edit.room',$item->id) }}" class="btn btn-warning px-3 radius-30"> Edit</a>
+                                <a href="{{ route('delete.room',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
 

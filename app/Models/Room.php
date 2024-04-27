@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Room extends Model
 {
@@ -18,5 +19,23 @@ class Room extends Model
         return $this->hasMany(RoomNumber::class, 'rooms_id')->where('status','Active');
     }
 
+    public function facilities()
+    {
+        return $this->hasMany(Facility::class, 'rooms_id');
+    }
+
+
+    public function displayPrice()
+    {
+        return "Rp.".number_format($this->price, 2);
+    }
+
+    public function imageUrl()
+    {
+        if (!$this->image) {
+            return url('upload/no_image.jpg');
+        }
+        return Storage::disk('public')->url('uploads/'.$this->image);
+    }
 
 }

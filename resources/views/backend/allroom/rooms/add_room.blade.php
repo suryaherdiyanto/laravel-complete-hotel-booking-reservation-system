@@ -38,8 +38,8 @@
 
         <div class="col-md-4">
             <label for="input1" class="form-label">Room Type Name </label>
-            <input type="text" name="roomtype_id" class="form-control {{ $errors->has('roomtype_id') ? 'is-invalid':'' }}" id="input1" value="" >
-            @error('roomtype_id')
+            <input type="text" name="roomtype" class="form-control {{ $errors->has('roomtype') ? 'is-invalid':'' }}" id="input1" value="" >
+            @error('roomtype')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
         </div>
@@ -78,8 +78,8 @@
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Size </label>
-            <input type="text" name="size" class="form-control {{ $errors->has('price') ? 'is-invalid':'' }}" id="input2"  value="">
-            @error('price')
+            <input type="text" name="size" class="form-control {{ $errors->has('size') ? 'is-invalid':'' }}" id="input2"  value="">
+            @error('size')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
         </div>
@@ -103,7 +103,7 @@
         <div class="col-md-6">
             <label for="input7" class="form-label">Room View </label>
             <select name="view" id="input7" class="form-select {{ $errors->has('view') ? 'is-invalid':'' }}">
-                <option selected="">Choose...</option>
+                <option value="">Choose...</option>
                 <option value="Sea View">Sea View </option>
                 <option value="Hill View">Hill View </option>
             </select>
@@ -115,7 +115,7 @@
         <div class="col-md-6">
             <label for="input7" class="form-label">Bed Style</label>
             <select name="bed_style" id="input7" class="form-select {{ $errors->has('bed_style') ? 'is-invalid':'' }}">
-                <option selected="">Choose...</option>
+                <option value="">Choose...</option>
                 <option value="Queen Bed"> Queen Bed </option>
                 <option value="Twin Bed">Twin Bed </option>
                 <option value="King Bed">King Bed </option>
