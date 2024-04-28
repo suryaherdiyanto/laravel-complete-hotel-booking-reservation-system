@@ -7,8 +7,8 @@
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="index.html" class="logo">
-            <img src="{{ asset($setting->logo) }}" class="logo-one" alt="Logo">
-            <img src="{{ asset($setting->logo) }}" class="logo-two" alt="Logo">
+            <img src="{{ $setting->imageUrl() }}" width="120" class="logo-one" alt="Logo">
+            <img src="{{ $setting->imageUrl() }}" width="120" class="logo-two" alt="Logo">
         </a>
     </div>
 
@@ -17,17 +17,17 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light ">
                 <a class="navbar-brand" href="index.html">
-                    <img src="{{ asset($setting->logo) }}" class="logo-one" alt="Logo">
-                    <img src="{{ asset($setting->logo) }}" class="logo-two" alt="Logo">
+                    <img src="{{ $setting->imageUrl() }}" width="120" class="logo-one" alt="Logo">
+                    <img src="{{ $setting->imageUrl() }}" width="120" class="logo-two" alt="Logo">
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
                             <a href="{{ url('/') }}" class="nav-link active">
-                                Home  
+                                Home
                             </a>
-                           
+
                         </li>
                         <li class="nav-item">
                             <a href="about.html" class="nav-link">
@@ -36,23 +36,23 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                               Restaurant 
+                               Restaurant
                             </a>
-                        
+
                         </li>
 
                         <li class="nav-item">
                             <a href="{{ route('show.gallery') }}" class="nav-link">
                               Gallery
                             </a>
-                          
+
                         </li>
 
                         <li class="nav-item">
                             <a href="{{ route('blog.list') }}" class="nav-link">
-                                Blog 
+                                Blog
                             </a>
-                           
+
                         </li>
     @php
         $room = App\Models\Room::latest()->get();
@@ -63,14 +63,14 @@
                                 <i class='bx bx-chevron-down'></i>
                             </a>
                             <ul class="dropdown-menu">
-                                @foreach ($room  as $item) 
+                                @foreach ($room  as $item)
                                 <li class="nav-item">
                                     <a href="room.html" class="nav-link">
                                         {{ $item['type']['name'] }}
                                     </a>
                                 </li>
                                 @endforeach
-                                
+
                             </ul>
                         </li>
 

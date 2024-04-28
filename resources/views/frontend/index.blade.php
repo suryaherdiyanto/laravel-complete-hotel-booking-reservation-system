@@ -5,8 +5,8 @@
     <div class="container">
         <div class="banner-content">
             <h1>Discover a Hotel & Resort to Book a Suitable Room</h1>
-            
-             
+
+
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
 <div class="banner-form-area">
     <div class="container">
         <div class="banner-form">
-            
+
             <form method="get" action="{{ route('booking.search') }}">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-3">
@@ -26,7 +26,7 @@
     <input autocomplete="off"  type="text" required name="check_in" class="form-control dt_picker" placeholder="yyy-mm-dd">
                                 <span class="input-group-addon"></span>
                             </div>
-                            <i class='bx bxs-chevron-down'></i>	
+                            <i class='bx bxs-chevron-down'></i>
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
    <input autocomplete="off"  type="text" required name="check_out" class="form-control dt_picker" placeholder="yyy-mm-dd">
                                 <span class="input-group-addon"></span>
                             </div>
-                            <i class='bx bxs-chevron-down'></i>	
+                            <i class='bx bxs-chevron-down'></i>
                         </div>
                     </div>
 
@@ -49,13 +49,13 @@
                                 <option>02</option>
                                 <option>03</option>
                                 <option>04</option>
-                            </select>	
+                            </select>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-4">
                         <button type="submit" class="default-btn btn-bg-one border-radius-5">
-                            Check Availability 
+                            Check Availability
                         </button>
                     </div>
                 </div>
@@ -72,17 +72,9 @@
  @include('frontend.home.room_area')
 <!-- Room Area End -->
 
-<!-- Book Area Two-->
-@include('frontend.home.room_area_two')
-<!-- Book Area Two End -->
-
 <!-- Services Area Three -->
 @include('frontend.home.services')
 <!-- Services Area Three End -->
-
-<!-- Team Area Three -->
-@include('frontend.home.team')
-<!-- Team Area Three End -->
 
 <!-- Testimonials Area Three -->
 @include('frontend.home.testimonials')

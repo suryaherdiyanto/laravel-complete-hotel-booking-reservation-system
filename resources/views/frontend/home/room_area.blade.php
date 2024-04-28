@@ -16,7 +16,7 @@
                         <div class="col-lg-5 col-md-4 p-0">
                             <div class="room-card-img">
                                 <a href="{{ url('room/details/'.$item->id) }}">
-                                    <img src="{{ asset( 'upload/roomimg/'.$item->image ) }}" alt="Images">
+                                    <img src="{{ $item->imageUrl() }}" width="180" alt="Images">
                                 </a>
                             </div>
                         </div>
@@ -27,13 +27,6 @@
                                      <a href="{{ url('room/details/'.$item->id) }}">{{ $item['type']['name'] }}</a>
                                 </h3>
                                 <span>{{ $item->price }} / Per Night </span>
-                                <div class="rating">
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                    <i class='bx bxs-star'></i>
-                                </div>
                                 <p>{{ $item->short_desc }}</p>
                                 <ul>
                    <li><i class='bx bx-user'></i> {{ $item->room_capacity }} Person</li>
@@ -44,7 +37,7 @@
         <li><i class='bx bx-show-alt'></i>{{ $item->view }}</li>
         <li><i class='bx bxs-hotel'></i> {{ $item->bed_style }}</li>
                                 </ul>
-                                
+
                                 <a href="room-details.html" class="book-more-btn">
                                     Book Now
                                 </a>
@@ -53,9 +46,9 @@
                     </div>
                 </div>
             </div>
- 
+
             @endforeach
-            
+
 
 
         </div>
