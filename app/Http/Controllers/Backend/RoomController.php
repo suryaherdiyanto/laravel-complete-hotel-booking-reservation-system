@@ -158,4 +158,17 @@ class RoomController extends Controller
 
         return redirect()->route('edit.room', $editroomno->room->id)->with($this->successUpdateNotif);
     }
+
+    public function DeleteRoom($id)
+    {
+        $room = Room::findOrFail($id);
+
+        $room->facilities()->delete();
+        $room->all_room_numbers()->delete();
+
+        $room->delete();
+
+        $this->successNotif['message'] = 'Room successfully deleted!';
+        return redirect()->back()->with($this->successNotif);
+    }
 }
