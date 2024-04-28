@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Requests\UpdateRoomRequest;
 use App\Models\Room;
+use App\Models\RoomNumber;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -78,7 +79,7 @@ class RoomController extends Controller
     {
         $editData = Room::findOrFail($id);
         $basic_facility = $editData->facilities;
-        $allroomNo = $editData->room_numbers;
+        $allroomNo = $editData->all_room_numbers;
 
         return view('backend.allroom.rooms.edit_rooms', compact('editData', 'basic_facility', 'allroomNo'));
     }
@@ -128,5 +129,33 @@ class RoomController extends Controller
 
         $this->successNotif['message'] = 'Room number successfully added!';
         return redirect()->back()->with($this->successNotif);
+    }
+
+    public function EditRoomNumber($id)
+    {
+        $editroomno = RoomNumber::findOrFail($id);
+
+        return view('backend.allroom.rooms.edit_room_no', compact('editroomno'));
+    }
+
+    public function UpdateRoomNumber($id, Request $request)
+    {
+        $editroomno = RoomNumber::findOrFail($id);
+        $editroomno->room_no = $request->room_no;
+        $editroomno->status = $request->status;
+        $editroomno->save();
+
+        $this->successUpdateNotif['message'] = 'Room number successfully updated!';
+
+        return redirect()->route('edit.room', $editroomno->room->id)->with($this->successUpdateNotif);
+    }
+
+    public function DeleteRoomNumber($id)
+    {
+        $editroomno = RoomNumber::findOrFail($id);
+        $editroomno->delete();
+        $this->successUpdateNotif['message'] = 'Room number successfully deleted!';
+
+        return redirect()->route('edit.room', $editroomno->room->id)->with($this->successUpdateNotif);
     }
 }

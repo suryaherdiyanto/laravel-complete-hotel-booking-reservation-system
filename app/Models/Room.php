@@ -19,6 +19,11 @@ class Room extends Model
         return $this->hasMany(RoomNumber::class, 'rooms_id')->where('status','Active');
     }
 
+    public function all_room_numbers()
+    {
+        return $this->hasMany(RoomNumber::class, 'rooms_id');
+    }
+
     public function facilities()
     {
         return $this->hasMany(Facility::class, 'rooms_id');
