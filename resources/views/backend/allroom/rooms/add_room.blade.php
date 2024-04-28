@@ -38,14 +38,14 @@
 
         <div class="col-md-4">
             <label for="input1" class="form-label">Room Type Name </label>
-            <input type="text" name="roomtype" class="form-control {{ $errors->has('roomtype') ? 'is-invalid':'' }}" id="input1" value="" >
+            <input type="text" name="roomtype" class="form-control {{ $errors->has('roomtype') ? 'is-invalid':'' }}" id="input1" value="{{ old('roomtype', '') }}" >
             @error('roomtype')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
         </div>
         <div class="col-md-4">
             <label for="input2" class="form-label">Total Adult</label>
-            <input type="text" name="total_adult" class="form-control {{ $errors->has('total_adult') ? 'is-invalid':'' }}" id="input2"  value="">
+            <input type="text" name="total_adult" class="form-control {{ $errors->has('total_adult') ? 'is-invalid':'' }}" id="input2"  value="{{ old('total_adult', '') }}">
             @error('total_adult')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
@@ -53,7 +53,7 @@
 
         <div class="col-md-4">
             <label for="input2" class="form-label">Total Child </label>
-            <input type="text" name="total_child" class="form-control {{ $errors->has('total_child') ? 'is-invalid':'' }}" id="input2" value="">
+            <input type="text" name="total_child" class="form-control {{ $errors->has('total_child') ? 'is-invalid':'' }}" id="input2" value="{{ old('total_child') }}">
             @error('total_child')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
@@ -70,7 +70,7 @@
 
         <div class="col-md-3">
             <label for="input1" class="form-label">Room Price  </label>
-            <input type="text" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid':'' }}" id="input1" value="" >
+            <input type="text" name="price" class="form-control {{ $errors->has('price') ? 'is-invalid':'' }}" id="input1" value="{{ old('price', '') }}" >
             @error('price')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
@@ -78,7 +78,7 @@
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Size </label>
-            <input type="text" name="size" class="form-control {{ $errors->has('size') ? 'is-invalid':'' }}" id="input2"  value="">
+            <input type="text" name="size" class="form-control {{ $errors->has('size') ? 'is-invalid':'' }}" id="input2"  value="{{ old('size', '') }}">
             @error('size')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
@@ -86,7 +86,7 @@
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Discount ( % )</label>
-            <input type="text" name="discount" class="form-control {{ $errors->has('discount') ? 'is-invalid':'' }}" id="input2"  value="">
+            <input type="text" name="discount" class="form-control {{ $errors->has('discount') ? 'is-invalid':'' }}" id="input2"  value="{{ old('discount', '') }}">
             @error('discount')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
@@ -94,7 +94,7 @@
 
         <div class="col-md-3">
             <label for="input2" class="form-label">Room Capacity </label>
-            <input type="text" name="room_capacity" class="form-control {{ $errors->has('room_capacity') ? 'is-invalid':'' }}" id="input2" value="">
+            <input type="text" name="room_capacity" class="form-control {{ $errors->has('room_capacity') ? 'is-invalid':'' }}" id="input2" value="{{ old('room_capacity', '') }}">
             @error('room_capacity')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
@@ -104,8 +104,8 @@
             <label for="input7" class="form-label">Room View </label>
             <select name="view" id="input7" class="form-select {{ $errors->has('view') ? 'is-invalid':'' }}">
                 <option value="">Choose...</option>
-                <option value="Sea View">Sea View </option>
-                <option value="Hill View">Hill View </option>
+                <option value="Sea View" {{ (old('view', '') == 'Sea View') ? 'selected':'' }}>Sea View </option>
+                <option value="Hill View" {{ (old('view', '') == 'Hill View') ? 'selected':'' }}>Hill View </option>
             </select>
             @error('view')
                 <span class="invalid-feedback">{{ $message }}</span>
@@ -116,9 +116,9 @@
             <label for="input7" class="form-label">Bed Style</label>
             <select name="bed_style" id="input7" class="form-select {{ $errors->has('bed_style') ? 'is-invalid':'' }}">
                 <option value="">Choose...</option>
-                <option value="Queen Bed"> Queen Bed </option>
-                <option value="Twin Bed">Twin Bed </option>
-                <option value="King Bed">King Bed </option>
+                <option value="Queen Bed" {{ (old('bed_style', '') == 'Queen Bed') ? 'selected':'' }}> Queen Bed </option>
+                <option value="Twin Bed" {{ (old('bed_style', '') == 'Twin Bed') ? 'selected':'' }}>Twin Bed </option>
+                <option value="King Bed" {{ (old('bed_style', '') == 'King Bed') ? 'selected':'' }}>King Bed </option>
             </select>
             @error('bed_style')
                 <span class="invalid-feedback">{{ $message }}</span>
@@ -127,7 +127,7 @@
 
         <div class="col-md-12">
             <label for="input11" class="form-label">Short Description </label>
-            <textarea name="short_desc" class="form-control" id="input11" placeholder="Address ..." rows="3"></textarea>
+            <textarea name="short_desc" class="form-control" id="input11" placeholder="Short description...." rows="3">{{ old('short_desc', '') }}</textarea>
         </div>
 
         <div class="row mt-2">
@@ -170,7 +170,7 @@
 
         <div class="col-md-12">
             <label for="input11" class="form-label"> Description </label>
-            <textarea name="description" class="form-control" id="myeditorinstance" ></textarea>
+            <textarea name="description" class="form-control" id="myeditorinstance" >{{ old('description', '') }}</textarea>
         </div>
 
 
