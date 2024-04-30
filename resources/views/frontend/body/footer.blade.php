@@ -10,7 +10,7 @@
                     <div class="footer-widget">
                         <div class="footer-logo">
                             <a href="index.html">
-                                <img src="{{ asset($setting->logo) }}" alt="Images">
+                                <img src="{{ asset($setting->imageUrl()) }}" width="92" alt="Images">
                             </a>
                         </div>
                         <p>
@@ -42,37 +42,37 @@
                                     <i class='bx bx-caret-right'></i>
                                     About Us
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="services-1.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Services
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="team.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Team
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="gallery.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Gallery
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="terms-condition.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
-                                    Terms 
+                                    Terms
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="privacy-policy.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Privacy Policy
                                 </a>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -86,37 +86,37 @@
                                     <i class='bx bx-caret-right'></i>
                                     Home
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="blog-1.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Blog
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="faq.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     FAQ
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="testimonials.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Testimonials
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="gallery.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Gallery
                                 </a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="contact.html" target="_blank">
                                     <i class='bx bx-caret-right'></i>
                                     Contact Us
                                 </a>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     <div class="footer-widget">
                         <h3>Newsletter</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Nullam tempor eget ante fringilla rutrum aenean sed venenatis .
                         </p>
                         <div class="footer-form">
@@ -166,19 +166,19 @@
                         <ul class="social-link">
                             <li>
                                 <a href="{{ $setting->facebook }}" target="_blank"><i class='bx bxl-facebook'></i></a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="{{ $setting->twitter }}" target="_blank"><i class='bx bxl-twitter'></i></a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="#" target="_blank"><i class='bx bxl-youtube'></i></a>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                 </div>

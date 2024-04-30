@@ -347,16 +347,16 @@ Route::controller(CommentController::class)->group(function(){
 
 
 /// Frontend Gallery All Route
-Route::controller(GalleryController::class)->group(function(){
+// Route::controller(GalleryController::class)->group(function(){
 
-    Route::get('/gallery', 'ShowGallery')->name('show.gallery');
+//     Route::get('/gallery', 'ShowGallery')->name('show.gallery');
 
-    // Contact All Route
-    Route::get('/contact', 'ContactUs')->name('contact.us');
-    Route::post('/store/contact', 'StoreContactUs')->name('store.contact');
+//     // Contact All Route
+//     Route::get('/contact', 'ContactUs')->name('contact.us');
+//     Route::post('/store/contact', 'StoreContactUs')->name('store.contact');
 
 
-});
+// });
 
 /// Notification All Route
 Route::controller(BookingController::class)->group(function(){

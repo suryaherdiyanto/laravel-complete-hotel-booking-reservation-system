@@ -21,7 +21,7 @@
 <!-- Checkout Area -->
 <section class="checkout-area pt-100 pb-70">
     <div class="container">
-        
+
         <form method="post" role="form" action="{{ route('checkout.store') }}" class="stripe_form require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
             @csrf
 
@@ -96,59 +96,59 @@
                 @endif
             </div>
         </div>
- 
+
 
     {{-- <p>Session Value : {{ json_encode(session('book_date')) }}</p>   --}}
- 
-                        
+
+
                         </div>
                     </div>
                 </div>
-                
-                
+
+
                 <div class="col-lg-4">
                     <section class="checkout-area pb-70">
                         <div class="card-body">
                               <div class="billing-details">
                                     <h3 class="title">Booking Summary</h3>
                                     <hr>
-      
+
     <div style="display: flex">
-            <img style="height:100px; width:120px;object-fit: cover" src="{{ (!empty($room->image))? url('upload/roomimg/'.$room->image):url('upload/no_image.jpg') }}" alt="Images" alt="Images">
+            <img style="height:100px; width:120px;object-fit: cover" src="{{ $room->imageUrl() }}" alt="Images" alt="Images">
             <div style="padding-left: 10px;">
                 <a href=" " style="font-size: 20px; color: #595959;font-weight: bold">{{ @$room->type->name }}</a>
                 <p><b>{{ $room->price }} / Night</b></p>
             </div>
 
     </div>
-      
+
                                     <br>
-      
+
     <table class="table" style="width: 100%">
         @php
-      $subtotal = $room->price * $nights * $book_data['number_of_rooms']; 
-      $discount =($room->discount/100)*$subtotal;  
+      $subtotal = $room->price * $nights * 1;
+      $discount =($room->discount/100)*$subtotal;
         @endphp
-            
+
             <tr>
                 <td><p>Total Night <br> <b> ( {{ $book_data['check_in'] }} - {{ $book_data['check_out'] }})</b></p></td>
                 <td style="text-align: right"><p> {{ $nights }} Days</p></td>
             </tr>
             <tr>
                 <td><p>Total Room</p></td>
-                <td style="text-align: right"><p>{{ $book_data['number_of_rooms'] }}</p></td>
+                <td style="text-align: right"><p>{{ 1 }}</p></td>
             </tr>
             <tr>
                 <td><p>Subtotal</p></td>
-                <td style="text-align: right"><p>${{ $subtotal }}</p></td>
+                <td style="text-align: right"><p>IDR {{ number_format($subtotal, 2) }}</p></td>
             </tr>
             <tr>
                 <td><p>Discount</p></td>
-                <td style="text-align:right"> <p>${{ $discount }}</p></td>
+                <td style="text-align:right"> <p>IDR {{ number_format($discount, 2) }}</p></td>
             </tr>
             <tr>
                 <td><p>Total</p></td>
-                <td style="text-align:right"> <p>${{ $subtotal-$discount }}</p></td>
+                <td style="text-align:right"> <p>IDR {{ number_format($subtotal-$discount, 2) }}</p></td>
             </tr>
     </table>
 
@@ -162,18 +162,18 @@
                 <div class="col-lg-8 col-md-8">
                     <div class="payment-box">
                         <div class="payment-method">
-                            
+
             <p>
    <input type="radio" id="cash-on-delivery" name="payment_method" value="COD">
                 <label for="cash-on-delivery">Cash On Delivery</label>
             </p>
-           
-           
+
+
               <p>
                 <input type="radio" class="pay_method" id="stripe" name="payment_method" value="Stripe">
                  <label for="stripe">Stripe</label>
                    </p>
-         
+
           <div id="stripe_pay" class="d-none">
                  <br>
                  <div class="form-row row">
@@ -200,18 +200,18 @@
                        <div class="col-md-12 error form-group hide"><div class="alert-danger alert">Please correct the errors and try again.</div></div>
                  </div>
            </div>
-         
-                          
+
+
                         </div>
        <button type="submit" class="order-btn" id="myButton" >Place to Order</button>
-                        
+
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </section>
-<!-- Checkout Area End --> 
+<!-- Checkout Area End -->
 
 <style>
     .hide{display:none}
@@ -234,7 +234,7 @@ $(document).ready(function () {
     });
 
 });
- 
+
 
 
 $(function() {

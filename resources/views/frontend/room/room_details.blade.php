@@ -25,13 +25,14 @@
                 <div class="room-details-side">
                     <div class="side-bar-form">
                         <h3>Booking Sheet </h3>
-                        <form>
+                        <form action="{{ url('checkout') }}">
+                            <input type="hidden" name="room_id" value="{{ $roomdetails->id }}">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Check in</label>
                                         <div class="input-group">
-                                            <input id="datetimepicker" type="text" class="form-control" placeholder="09/29/2020">
+                                            <input id="datetimepicker" type="text" class="form-control" name="checkin" placeholder="09/29/2020">
                                             <span class="input-group-addon"></span>
                                         </div>
                                         <i class='bx bxs-calendar'></i>
@@ -42,7 +43,7 @@
                                     <div class="form-group">
                                         <label>Check Out</label>
                                         <div class="input-group">
-                                            <input id="datetimepicker-check" type="text" class="form-control" placeholder="09/29/2020">
+                                            <input id="datetimepicker-check" type="text" class="form-control" name="checkout" placeholder="09/29/2020">
                                             <span class="input-group-addon"></span>
                                         </div>
                                         <i class='bx bxs-calendar'></i>
@@ -52,29 +53,16 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Numbers of Persons</label>
-                                        <select class="form-control">
+                                        <select class="form-control" name="num_persons">
                                             <option>01</option>
                                             <option>02</option>
                                             <option>03</option>
                                             <option>04</option>
                                             <option>05</option>
-                                        </select>	
+                                        </select>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Numbers of Rooms</label>
-                                        <select class="form-control">
-                                            <option>01</option>
-                                            <option>02</option>
-                                            <option>03</option>
-                                            <option>04</option>
-                                            <option>05</option>
-                                        </select>	
-                                    </div>
-                                </div>
-    
                                 <div class="col-lg-12 col-md-12">
                                     <button type="submit" class="default-btn btn-bg-three border-radius-5">
                                         Book Now
@@ -84,63 +72,40 @@
                         </form>
                     </div>
 
-                  
+
                 </div>
             </div>
 
             <div class="col-lg-8">
                 <div class="room-details-article">
-                    
-                    <div class="room-details-slider owl-carousel owl-theme">
-                        @foreach ($multiImage as $image) 
-                        <div class="room-details-item">
-                            <img src="{{ asset('upload/roomimg/multi_img/'.$image->multi_img) }}" alt="Images">
-                        </div>
-                        @endforeach
-                       
-                    </div>
-
-
-
-
-
                     <div class="room-details-title">
                         <h2>{{ $roomdetails->type->name }}</h2>
                         <ul>
-                            
+
                             <li>
                                <b> Basic : ${{ $roomdetails->price }}/Night/Room</b>
-                            </li> 
-                         
+                            </li>
+
                         </ul>
                     </div>
 
                     <div class="room-details-content">
+                        <img src="{{ $roomdetails->imageUrl() }}" class="img img-fluid" alt="">
                         <p>
                             {!! $roomdetails->description !!}
                         </p>
 
-
-
-
 <div class="side-bar-plan">
                         <h3>Basic Plan Facilities</h3>
                         <ul>
-                            @foreach ($facility as $fac) 
+                            @foreach ($facility as $fac)
                             <li><a href="#">{{ $fac->facility_name }}</a></li>
                             @endforeach
                         </ul>
 
-                        
+
                     </div>
-
-
-
-
-
-
-
-<div class="row"> 
+<div class="row">
 <div class="col-lg-6">
 
 
@@ -155,8 +120,8 @@
         <li>
              <a href="#"> <b>Size : </b> {{ $roomdetails->size }}ft2 <i class='bx bxs-cloud-download'></i></a>
         </li>
-       
-       
+
+
     </ul>
 </div>
 </div>
@@ -179,43 +144,16 @@
         <li>
              <a href="#"> <b>Bad Style : </b> {{ $roomdetails->bed_style }} <i class='bx bxs-cloud-download'></i></a>
         </li>
-         
+
     </ul>
 </div>
-</div> 
+</div>
 
-            </div> 
+            </div>
                 </div>
 
 
 
-                    </div>
-
-                    <div class="room-details-review">
-                        <h2>Clients Review and Retting's</h2>
-                        <div class="review-ratting">
-                            <h3>Your retting: </h3>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                        </div>
-                        <form >
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <textarea name="message" class="form-control"  cols="30" rows="8" required data-error="Write your message" placeholder="Write your review here.... "></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12">
-                                    <button type="submit" class="default-btn btn-bg-three">
-                                        Submit Review
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -225,6 +163,8 @@
 <!-- Room Details Area End -->
 
 <!-- Room Details Other -->
+@if ($otherRooms->count() > 0)
+
 <div class="room-details-other pb-70">
     <div class="container">
         <div class="room-details-text">
@@ -232,7 +172,7 @@
         </div>
 
         <div class="row ">
-           
+
            @foreach ($otherRooms as $item)
             <div class="col-lg-6">
                 <div class="room-card-two">
@@ -268,23 +208,20 @@
         <li><i class='bx bx-show-alt'></i>{{ $item->view }}</li>
         <li><i class='bx bxs-hotel'></i> {{ $item->bed_style }}</li>
                                 </ul>
-                                
-                                <a href="room-details.html" class="book-more-btn">
-                                    Book Now
-                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
- 
+
             @endforeach
-           
+
 
 
         </div>
     </div>
 </div>
+@endif
 <!-- Room Details Other End -->
 
 
