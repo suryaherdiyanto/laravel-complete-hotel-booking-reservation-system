@@ -53,4 +53,36 @@ class FrontendRoomController extends Controller
 
         return view('frontend.room.search_room_details', compact('av_room', 'roomdetails', 'facility', 'otherRooms', 'room_id', 'totalNights'));
     }
+
+    public function CheckRoomAvailability(Request $request)
+    {
+        $room = Room::find($request->room_id);
+
+        if (!$room) {
+            return response()->json(['message' => "Room id: {$request->room_id} not found"], 404);
+        }
+
+        $roomBookings = $room->bookings()
+                            ->whereNotBetween('check_in', [$request->check_in, $request->check_out])
+                            ->whereNotBetween('check_out', [$request->check_in, $request->check_out])
+                            ->doesntHave('assign_rooms')
+                            ->get()
+                            ->reduce(function(int $carry, $item) {
+                                return $carry + $item->assign_rooms->count();
+                            });
+        $av_room = $room->room_numbers->count();
+
+        if (!$roomBookings) {
+            $av_room -= $roomBookings;
+        }
+
+        $checkoutDt = Carbon::createFromFormat('Y-m-d', $request->get('check_out'));
+        $checkinDt = Carbon::createFromFormat('Y-m-d', $request->get('check_in'));
+        $totalNights = $checkinDt->diffInDays($checkoutDt, true);
+
+        return response()->json([
+            'total_nights' => $totalNights,
+            'available_room' => $av_room
+        ]);
+    }
 }

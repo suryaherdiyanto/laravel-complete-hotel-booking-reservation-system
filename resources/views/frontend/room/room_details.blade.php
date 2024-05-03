@@ -25,14 +25,14 @@
                 <div class="room-details-side">
                     <div class="side-bar-form">
                         <h3>Booking Sheet </h3>
-                        <form action="{{ url('checkout') }}">
+                        <form action="{{ route('search_room_details', $roomdetails->id) }}">
                             <input type="hidden" name="room_id" value="{{ $roomdetails->id }}">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Check in</label>
                                         <div class="input-group">
-                                            <input id="datetimepicker" type="text" class="form-control" name="checkin" placeholder="09/29/2020">
+                                            <input id="check_in" type="text" class="form-control dt_picker" name="check_in" placeholder="09/29/2020" required>
                                             <span class="input-group-addon"></span>
                                         </div>
                                         <i class='bx bxs-calendar'></i>
@@ -43,7 +43,7 @@
                                     <div class="form-group">
                                         <label>Check Out</label>
                                         <div class="input-group">
-                                            <input id="datetimepicker-check" type="text" class="form-control" name="checkout" placeholder="09/29/2020">
+                                            <input id="check_out" type="text" class="form-control dt_picker" name="check_out" placeholder="09/29/2020" required>
                                             <span class="input-group-addon"></span>
                                         </div>
                                         <i class='bx bxs-calendar'></i>
@@ -53,7 +53,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Numbers of Persons</label>
-                                        <select class="form-control" name="num_persons">
+                                        <select class="form-control" name="persion">
                                             <option>01</option>
                                             <option>02</option>
                                             <option>03</option>
