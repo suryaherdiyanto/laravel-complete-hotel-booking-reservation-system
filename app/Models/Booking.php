@@ -22,5 +22,4 @@ class Booking extends Model
         return $this->belongsTo(Room::class,'rooms_id','id');
     }
 
-    
 }

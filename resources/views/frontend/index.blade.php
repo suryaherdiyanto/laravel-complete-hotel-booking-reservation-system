@@ -45,10 +45,10 @@
                         <div class="form-group">
                             <label>GUESTS</label>
                             <select name="persion" class="form-control">
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                                <option>04</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
                             </select>
                         </div>
                     </div>

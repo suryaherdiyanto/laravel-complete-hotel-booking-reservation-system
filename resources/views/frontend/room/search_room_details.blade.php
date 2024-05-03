@@ -30,7 +30,7 @@
 
 <form action="{{ route('user_booking_store',$roomdetails->id) }}" method="post" id="bk_form">
     @csrf
-    
+
     <input type="hidden" name="room_id" value="{{ $roomdetails->id }}">
 
 
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label>Check in</label>
                 <div class="input-group">
-    <input autocomplete="off"  type="text" required name="check_in" id="check_in"  class="form-control dt_picker" value="{{ old('check_in') ? date('Y-m-d', strtotime(old('check_in'))) : '' }}" >
+    <input autocomplete="off"  type="text" required name="check_in" id="check_in"  class="form-control dt_picker" value="{{ request('check_in') ? date('Y-m-d', strtotime(request('check_in'))) : '' }}" >
                     <span class="input-group-addon"></span>
                 </div>
                 <i class='bx bxs-calendar'></i>
@@ -50,7 +50,7 @@
             <div class="form-group">
                 <label>Check Out</label>
                 <div class="input-group">
-   <input autocomplete="off"  type="text" required name="check_out" id="check_out"  class="form-control dt_picker" value="{{ old('check_out') ? date('Y-m-d', strtotime(old('check_out'))) : '' }}" >
+   <input autocomplete="off"  type="text" required name="check_out" id="check_out"  class="form-control dt_picker" value="{{ request('check_out') ? date('Y-m-d', strtotime(request('check_out'))) : '' }}" >
                     <span class="input-group-addon"></span>
                 </div>
                 <i class='bx bxs-calendar'></i>
@@ -61,10 +61,10 @@
             <div class="form-group">
                 <label>Numbers of Persons</label>
                 <select class="form-control" name="persion" id="nmbr_person">
-                @for ($i = 1; $i <= 4; $i++) 
-      <option {{ old('persion') == $i ? 'selected' : '' }} value="0{{ $i }}" >0{{ $i }} </option>
+                @for ($i = 1; $i <= 4; $i++)
+      <option {{ request('persion') == $i ? 'selected' : '' }} value="0{{ $i }}" >0{{ $i }} </option>
               @endfor
-                </select>	
+                </select>
             </div>
         </div>
 
@@ -76,36 +76,36 @@
             <div class="form-group">
                 <label>Numbers of Rooms</label>
                 <select class="form-control number_of_rooms" name="number_of_rooms" id="select_room">
-                    @for ($i = 1; $i <= 5; $i++)  
+                    @for ($i = 1; $i <= 5; $i++)
                     <option value="0{{ $i }}">0{{ $i }}</option>
                     @endfor
-                    
-                </select>	
+
+                </select>
             </div>
-            <input type="hidden" name="available_room" id="available_room" >
+            <input type="hidden" name="available_room" id="available_room" value="{{ $av_room }}" >
             <p class="available_room"></p>
         </div>
-     
+
 
         <div class="col-lg-12">
             <table class="table">
-                
+
     <tbody>
-        <tr> 
+        <tr>
         <td><p> SubTotal</p></td>
-        <td style="text-align: right" ><span class="t_subtotal">0</span> </td> 
+        <td style="text-align: right" ><span class="t_subtotal">IDR{{ number_format($roomdetails->price * $totalNights, 2) }}</span> </td>
         </tr>
 
-        <tr> 
+        <tr>
         <td><p> Discount</p></td>
-        <td style="text-align: right" ><span class="t_discount">0</span></td> 
+        <td style="text-align: right" ><span class="t_discount">IDR{{ number_format($roomdetails->discount, 2) }}</span></td>
         </tr>
 
-        <tr> 
+        <tr>
         <td><p> Total</p></td>
-        <td style="text-align: right" ><span class="t_g_total">0</span></td> 
+        <td style="text-align: right" ><span class="t_g_total">IDR{{ number_format(($roomdetails->price * $totalNights) - $roomdetails->discount, 2) }}</span></td>
         </tr>
-        
+
     </tbody>
               </table>
 
@@ -125,34 +125,21 @@
 </form>
                     </div>
 
-                  
+
                 </div>
             </div>
 
             <div class="col-lg-8">
                 <div class="room-details-article">
-                    
-                    <div class="room-details-slider owl-carousel owl-theme">
-                        @foreach ($multiImage as $image) 
-                        <div class="room-details-item">
-                            <img src="{{ asset('upload/roomimg/multi_img/'.$image->multi_img) }}" alt="Images">
-                        </div>
-                        @endforeach
-                       
-                    </div>
-
-
-
-
 
                     <div class="room-details-title">
                         <h2>{{ $roomdetails->type->name }}</h2>
                         <ul>
-                            
+
                             <li>
                                <b> Basic : ${{ $roomdetails->price }}/Night/Room</b>
-                            </li> 
-                         
+                            </li>
+
                         </ul>
                     </div>
 
@@ -167,12 +154,12 @@
 <div class="side-bar-plan">
                         <h3>Basic Plan Facilities</h3>
                         <ul>
-                            @foreach ($facility as $fac) 
+                            @foreach ($facility as $fac)
                             <li><a href="#">{{ $fac->facility_name }}</a></li>
                             @endforeach
                         </ul>
 
-                        
+
                     </div>
 
 
@@ -181,7 +168,7 @@
 
 
 
-<div class="row"> 
+<div class="row">
 <div class="col-lg-6">
 
 
@@ -196,8 +183,8 @@
         <li>
              <a href="#"> <b>Size : </b> {{ $roomdetails->size }}ft2 <i class='bx bxs-cloud-download'></i></a>
         </li>
-       
-       
+
+
     </ul>
 </div>
 </div>
@@ -220,44 +207,18 @@
         <li>
              <a href="#"> <b>Bad Style : </b> {{ $roomdetails->bed_style }} <i class='bx bxs-cloud-download'></i></a>
         </li>
-         
+
     </ul>
 </div>
-</div> 
+</div>
 
-            </div> 
+            </div>
                 </div>
 
 
 
                     </div>
 
-                    <div class="room-details-review">
-                        <h2>Clients Review and Retting's</h2>
-                        <div class="review-ratting">
-                            <h3>Your retting: </h3>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                            <i class='bx bx-star'></i>
-                        </div>
-                        <form >
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <textarea name="message" class="form-control"  cols="30" rows="8" required data-error="Write your message" placeholder="Write your review here.... "></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12">
-                                    <button type="submit" class="default-btn btn-bg-three">
-                                        Submit Review
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
@@ -273,7 +234,7 @@
         </div>
 
         <div class="row ">
-           
+
            @foreach ($otherRooms as $item)
             <div class="col-lg-6">
                 <div class="room-card-two">
@@ -309,7 +270,7 @@
         <li><i class='bx bx-show-alt'></i>{{ $item->view }}</li>
         <li><i class='bx bxs-hotel'></i> {{ $item->bed_style }}</li>
                                 </ul>
-                                
+
                                 <a href="room-details.html" class="book-more-btn">
                                     Book Now
                                 </a>
@@ -318,9 +279,9 @@
                     </div>
                 </div>
             </div>
- 
+
             @endforeach
-           
+
 
 
         </div>
