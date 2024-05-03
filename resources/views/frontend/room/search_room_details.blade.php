@@ -93,17 +93,17 @@
     <tbody>
         <tr>
         <td><p> SubTotal</p></td>
-        <td style="text-align: right" ><span class="t_subtotal">IDR{{ number_format($roomdetails->price * $totalNights, 2) }}</span> </td>
+        <td style="text-align: right" ><span class="t_subtotal">IDR {{ number_format($roomdetails->price * $totalNights, 2) }}</span> </td>
         </tr>
 
         <tr>
         <td><p> Discount</p></td>
-        <td style="text-align: right" ><span class="t_discount">IDR{{ number_format($roomdetails->discount, 2) }}</span></td>
+        <td style="text-align: right" ><span class="t_discount">IDR {{ number_format($roomdetails->discount, 2) }}</span></td>
         </tr>
 
         <tr>
         <td><p> Total</p></td>
-        <td style="text-align: right" ><span class="t_g_total">IDR{{ number_format(($roomdetails->price * $totalNights) - $roomdetails->discount, 2) }}</span></td>
+        <td style="text-align: right" ><span class="t_g_total">IDR {{ number_format(($roomdetails->price * $totalNights) - $roomdetails->discount, 2) }}</span></td>
         </tr>
 
     </tbody>
@@ -338,14 +338,18 @@
        var room_price = $("#room_price").val();
        var discount_p = $("#discount_p").val();
        var select_room = $("#select_room").val();
+       var currency = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'IDR'
+       });
 
        var sub_total = room_price * total_nights * parseInt(select_room);
 
        var discount_price = (parseInt(discount_p)/100)*sub_total;
 
-       $(".t_subtotal").text(sub_total);
-       $(".t_discount").text(discount_price);
-       $(".t_g_total").text(sub_total-discount_price);
+       $(".t_subtotal").text(`${currency.format(sub_total)}`);
+       $(".t_discount").text(`${currency.format(discount_price)}`);
+       $(".t_g_total").text(`${currency.format(sub_total-discount_price)}`);
 
     }
 
