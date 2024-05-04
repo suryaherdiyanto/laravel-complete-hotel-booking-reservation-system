@@ -38,6 +38,7 @@
                     <select name="country" class="form-control">
                         <option value="Bangladesh">Bangladesh</option>
                         <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
                         <option value="United Arab">United Arab Emirates</option>
                         <option value="China">China</option>
                         <option value="United Kingdom">United Kingdom</option>
@@ -163,15 +164,9 @@
                     <div class="payment-box">
                         <div class="payment-method">
 
-            <p>
-   <input type="radio" id="cash-on-delivery" name="payment_method" value="COD">
-                <label for="cash-on-delivery">Cash On Delivery</label>
-            </p>
-
-
               <p>
                 <input type="radio" class="pay_method" id="stripe" name="payment_method" value="Stripe">
-                 <label for="stripe">Stripe</label>
+                 <label for="stripe">Midtrans</label>
                    </p>
 
           <div id="stripe_pay" class="d-none">
