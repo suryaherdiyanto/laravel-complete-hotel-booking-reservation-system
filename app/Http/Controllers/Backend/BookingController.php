@@ -196,4 +196,11 @@ class BookingController extends Controller
             'message' => 'Booking has been updated!'
         ]);
     }
+
+    public function DownloadInvoice($id)
+    {
+        $editData = Booking::findOrFail($id);
+
+        return view('backend.booking.booking_invoice', compact('editData'));
+    }
 }

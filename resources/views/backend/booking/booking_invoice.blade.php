@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Invoice</title>
 
-<style type="text/css"> 
+<style type="text/css">
     * {
         font-family: Verdana, Arial, sans-serif;
     }
@@ -56,7 +56,7 @@
                Email:support@easylearningbd.com <br>
                Mob: 1245454545 <br>
                Dhaka 1207,Dhanmondi:#4 <br>
-              
+
             </pre>
         </td>
     </tr>
@@ -67,7 +67,7 @@
   <table width="100%" style="background:white; padding:2px;"></table>
 
   <table width="100%" style="background: #F7F7F7; padding:0 5 0 5px;" class="font">
-     
+
     <thead class="table-light">
         <tr>
             <th>Room Type</th>
@@ -82,40 +82,40 @@
         <tr>
             <td>{{ $editData->room->type->name }}</td>
             <td>{{ $editData->number_of_rooms }}</td>
-            <td>${{ $editData->actual_price }}</td>
+            <td>Rp.{{ number_format($editData->actual_price) }}</td>
             <td>
-                <span class="badge bg-primary">{{ $editData->check_in }}</span>  /<br> 
+                <span class="badge bg-primary">{{ $editData->check_in }}</span>  /<br>
                 <span class="badge bg-warning text-dark">{{ $editData->check_out }}</span></td>
             <td>{{ $editData->total_night }}</td>
-            <td>${{ $editData->actual_price *  $editData->number_of_rooms }}</td>
+            <td>Rp.{{ number_format($editData->actual_price *  $editData->number_of_rooms) }}</td>
 
         </tr>
-    </tbody> 
-              
+    </tbody>
+
   </table>
   <br/>
 
   <table class="table test_table" style="float: right" border="none">
     <tr>
         <td>Subtotal</td>
-        <td>${{ $editData->subtotal }}</td>
+        <td>Rp.{{ number_format($editData->subtotal) }}</td>
     </tr>
     <tr>
         <td>Discount</td>
-        <td>${{ $editData->discount }}</td>
+        <td>Rp.{{ number_format($editData->discount) }}</td>
     </tr>
     <tr>
         <td>Grand Total</td>
-        <td>${{ $editData->total_price }}</td>
+        <td>Rp.{{ number_format($editData->total_price) }}</td>
     </tr>
 </table>
- 
 
 
-   
- 
+
+
+
   <table class="table test_table" style="float:right; border:none">
-                        
+
  </table>
 
 
