@@ -148,7 +148,7 @@
                         </tr>
                         <tr>
                             <td>Grand Total</td>
-                            <td>Rp.{{ number_format($editData->total_price) }}</td>
+                            <td>Rp.{{ number_format($editData->total_price, 2) }}</td>
                         </tr>
                     </table>
 
