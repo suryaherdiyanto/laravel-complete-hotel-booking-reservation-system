@@ -66,7 +66,7 @@ class BookingController extends Controller
             'actual_price' => $room->price,
             'discount' => $room->discount,
             'subtotal' => ($room->price * $nights) - $room->discount,
-            'payment_status' => 'pending',
+            'payment_status' => 0,
             'status' => 0,
             'code' => now()->timestamp
         ]);
