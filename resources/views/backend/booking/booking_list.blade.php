@@ -1,10 +1,10 @@
 @extends('admin.admin_dashboard')
-@section('admin') 
+@section('admin')
 
-<div class="page-content"> 
+<div class="page-content">
 	<!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-         
+
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
@@ -14,17 +14,11 @@
                 </ol>
             </nav>
         </div>
-        <div class="ms-auto">
-            <div class="btn-group">
-                <a href="{{ route('add.team') }}" class="btn btn-primary px-5">Add Booking </a>
-                
-            </div>
-        </div>
     </div>
     <!--end breadcrumb-->
 
 
-    
+
     <hr/>
     <div class="card">
         <div class="card-body">
@@ -46,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                       @foreach ($allData as $key=> $item ) 
+                       @foreach ($allData as $key=> $item )
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td> <a href="{{ route('edit_booking',$item->id) }}"> {{ $item->code }} </a></td>
@@ -66,24 +60,24 @@
                                 @else
                                 <span class="text-danger">Pending</span>
                                  @endif </td>
-                             
+
                             <td>
- 
+
     <a href="{{ route('delete.team',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
 
                             </td>
                         </tr>
-                        @endforeach 
-                      
+                        @endforeach
+
                     </tbody>
-                 
+
                 </table>
             </div>
         </div>
     </div>
-     
+
     <hr/>
-     
+
 </div>
 
 

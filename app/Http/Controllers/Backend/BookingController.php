@@ -106,4 +106,46 @@ class BookingController extends Controller
 
         return view('frontend.dashboard.user_booking', compact('allData'));
     }
+
+    public function EditBooking($id)
+    {
+        $editData = Booking::findOrFail($id);
+
+        return view('backend.booking.edit_booking', compact('editData'));
+    }
+
+    public function AssignRoom($id)
+    {
+        $booking = Booking::find($id);
+        $bookedRoomNumbers = $booking->assign_rooms->pluck('room_number_id');
+
+        $room_numbers = $booking->room->room_numbers()->whereNotIn('id', $bookedRoomNumbers)->get();
+
+        return view('backend.booking.assign_room', compact('room_numbers', 'booking'));
+    }
+
+    public function AssignRoomStore($booking_id, $room_number_id)
+    {
+        $booking = Booking::find($booking_id);
+        BookingRoomList::create([
+            'booking_id' => $booking_id,
+            'room_id' => $booking->rooms_id,
+            'room_number_id' => $room_number_id
+        ]);
+
+        return redirect()->back()->with([
+            'alert-type' => 'success',
+            'message' => 'Room has been assigned!'
+        ]);
+    }
+
+    public function AssignRoomDelete($id)
+    {
+        BookingRoomList::destroy($id);
+
+        return redirect()->back()->with([
+            'alert-type' => 'success',
+            'message' => 'Assigned room have been removed!'
+        ]);
+    }
 }
