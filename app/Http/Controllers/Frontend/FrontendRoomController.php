@@ -59,18 +59,16 @@ class FrontendRoomController extends Controller
         }
 
         $roomBookings = $room->bookings()
+                            ->withCount('assign_rooms')
                             ->where(function($q) use($request) {
-                                return $q->whereNotBetween('check_in', [$request->check_in, $request->check_out])
-                                        ->orWhereNotBetween('check_out', [$request->check_in, $request->check_out]);
+                                return $q->whereBetween('check_in', [$request->check_in, $request->check_out])
+                                        ->orWhereBetween('check_out', [$request->check_in, $request->check_out]);
                             })
-                            ->doesntHave('assign_rooms')
                             ->get()
-                            ->reduce(function(int $carry, $item) {
-                                return $carry + $item->assign_rooms->count();
-                            });
+                            ->sum('assign_rooms_count');
         $av_room = $room->room_numbers->count();
 
-        if (!$roomBookings) {
+        if ($roomBookings) {
             $av_room -= $roomBookings;
         }
 

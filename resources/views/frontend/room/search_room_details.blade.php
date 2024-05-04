@@ -77,7 +77,7 @@
                 <label>Numbers of Rooms</label>
                 <select class="form-control number_of_rooms" name="number_of_rooms" id="select_room">
                     @for ($i = 1; $i <= 5; $i++)
-                    <option value="0{{ $i }}">0{{ $i }}</option>
+                    <option value="{{ $i }}">0{{ $i }}</option>
                     @endfor
 
                 </select>

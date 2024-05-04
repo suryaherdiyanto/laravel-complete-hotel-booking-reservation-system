@@ -149,4 +149,51 @@ class BookingController extends Controller
             'message' => 'Assigned room have been removed!'
         ]);
     }
+
+    public function UpdateBookingStatus($id, Request $request)
+    {
+
+        $booking = Booking::find($id);
+        $booking->payment_status = $request->payment_status;
+        $booking->status = $request->status;
+        $booking->save();
+
+        return redirect()->back()->with([
+            'alert-type' => 'success',
+            'message' => 'Booking status has been updated!'
+        ]);
+    }
+
+    public function UpdateBooking($id, Request $request)
+    {
+        $booking = Booking::find($id);
+
+        $booking->check_in = $request->check_in;
+        $booking->check_out = $request->check_out;
+        $booking->number_of_rooms = $request->number_of_rooms;
+        $booking->save();
+
+        $booking->assign_rooms()->delete();
+        $assign_rooms = [];
+
+        $availableRoomNumbers = $booking->room->room_numbers()->whereDoesntHave('bookings', function($q) use($booking) {
+            return $q->whereBetween('check_in', [$booking->check_in, $booking->check_out])->orWhereBetween('check_out', [$booking->check_in, $booking->check_out]);
+        })->get()
+        ->pluck('id');
+
+        for ($i=0; $i < $booking->number_of_rooms; $i++) {
+            if (isset($availableRoomNumbers[$i])) {
+                $assign_rooms[] = [
+                    'room_id' => $booking->rooms_id,
+                    'room_number_id' => $availableRoomNumbers[$i]
+                ];
+            }
+        }
+        $booking->assign_rooms()->createMany($assign_rooms);
+
+        return redirect()->back()->with([
+            'alert-type' => 'success',
+            'message' => 'Booking has been updated!'
+        ]);
+    }
 }
