@@ -26,7 +26,7 @@
             <h2>Our Rooms & Rates</h2>
         </div>
         <div class="row pt-45">
-           
+
            @foreach ($rooms as $item)
             <div class="col-lg-4 col-md-6">
                 <div class="room-card">
@@ -36,7 +36,7 @@
                     <div class="content">
                         <h6><a href="{{ url('room/details/'.$item->id) }}">{{ $item['type']['name'] }}</a></h6>
                         <ul>
-                            <li class="text-color">${{ $item->price }}</li>
+                            <li class="text-color">IDR {{ number_format($item->price, 2) }}</li>
                             <li class="text-color">Per Night</li>
                         </ul>
                         <div class="rating text-color">
@@ -48,10 +48,10 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
            @endforeach
 
-        
+
         </div>
     </div>
 </div>

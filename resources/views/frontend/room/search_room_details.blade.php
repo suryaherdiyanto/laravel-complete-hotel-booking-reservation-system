@@ -271,7 +271,7 @@
         <li><i class='bx bxs-hotel'></i> {{ $item->bed_style }}</li>
                                 </ul>
 
-                                <a href="room-details.html" class="book-more-btn">
+                                <a href="{{ url('room/details/'.$item->id) }}" class="book-more-btn">
                                     Book Now
                                 </a>
                             </div>
@@ -291,8 +291,8 @@
 
 <script>
     $(document).ready(function () {
-       var check_in = "{{ old('check_in') }}";
-       var check_out = "{{ old('check_out') }}";
+       var check_in = "{{ request('check_in') }}";
+       var check_out = "{{ request('check_out') }}";
        var room_id = "{{ $room_id }}";
        if (check_in != '' && check_out != ''){
           getAvaility(check_in, check_out, room_id);
@@ -367,6 +367,7 @@
           return false;
        }
 
+       getAvaility(check_in, check_out, room_id);
     })
  </script>
 
