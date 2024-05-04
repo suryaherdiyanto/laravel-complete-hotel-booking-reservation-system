@@ -80,10 +80,6 @@
                             </a>
                         </li>
                     </ul>
-
-                    <div class="nav-btn">
-                        <a href="#" class="default-btn btn-bg-one border-radius-5">Book Now</a>
-                    </div>
                 </div>
             </nav>
         </div>
