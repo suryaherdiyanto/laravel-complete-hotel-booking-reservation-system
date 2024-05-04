@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\BookingRoomList;
 use App\Models\Room;
+use App\Notifications\BookingComplete;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class BookingController extends Controller
         $check_out = Carbon::createFromFormat('Y-m-d', $request->check_out);
         $nights = $check_in->diffInDays($check_out);
 
-        $availableRoomNumbers = $room->room_numbers()->doesnHave('bookings', function($q) use($request) {
+        $availableRoomNumbers = $room->room_numbers()->whereDoesntHave('bookings', function($q) use($request) {
             return $q->whereBetween('check_in', [$request->check_in, $request->check_out])->orWhereBetween('check_out', [$request->check_in, $request->check_out]);
         })->get()
         ->pluck('id');
@@ -78,6 +79,25 @@ class BookingController extends Controller
         }
 
         return view('frontend.checkout.checkout', compact('room', 'nights', 'book_data'));
+    }
+
+    public function CheckoutStore(Request $request)
+    {
+        $booking = Booking::find($request->booking_id);
+        $booking->name = $request->name;
+        $booking->phone = $request->phone;
+        $booking->country = $request->country;
+        $booking->zip_code = $request->zip_code;
+        $booking->state = $request->state;
+        $booking->payment_method = $request->payment_method;
+        $booking->save();
+
+        $booking->user->notify(new BookingComplete($booking->name));
+
+        return redirect('/')->with([
+            'alert-type' => 'success',
+            'message' => 'Your booking has been placed, We\'ll contacting you ASAP. You can see your booking details on you dashboard'
+        ]);
     }
 
     public function UserBooking()

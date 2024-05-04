@@ -24,6 +24,7 @@
 
         <form method="post" role="form" action="{{ route('checkout.store') }}" class="stripe_form require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}">
             @csrf
+            <input type="hidden" name="booking_id" value="{{ $book_data['id'] }}">
 
             <div class="row">
                 <div class="col-lg-8">
@@ -53,35 +54,35 @@
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
                 <label>  Name <span class="required">*</span></label>
-                <input type="text" name="name" class="form-control" value="{{ \Auth::user()->name }}">
+                <input type="text" name="name" class="form-control" value="{{ \Auth::user()->name }}" required>
             </div>
         </div>
 
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
                 <label>Email <span class="required">*</span></label>
-                <input type="email" name="email" class="form-control" value="{{ \Auth::user()->email }}">
+                <input type="email" name="email" class="form-control" value="{{ \Auth::user()->email }}" required>
             </div>
         </div>
 
         <div class="col-lg-6 col-md-12">
             <div class="form-group">
                 <label>Phone</label>
-                <input type="text" name="phone" class="form-control" value="{{ \Auth::user()->phone }}">
+                <input type="text" name="phone" class="form-control" value="{{ \Auth::user()->phone }}" required>
             </div>
         </div>
 
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
                 <label>Address <span class="required">*</span></label>
-                <input type="text" name="address" class="form-control" value="{{ \Auth::user()->address }}">
+                <input type="text" name="address" class="form-control" value="{{ \Auth::user()->address }}" required>
             </div>
         </div>
 
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
                 <label>State <span class="required">*</span></label>
-                <input type="text" name="state" class="form-control">
+                <input type="text" name="state" class="form-control" required>
                 @if ($errors->has('state'))
                     <div class="text-danger">{{ $errors->first('state') }}</div>
                 @endif
@@ -91,7 +92,7 @@
         <div class="col-lg-6 col-md-6">
             <div class="form-group">
                 <label>ZipCode <span class="required">*</span></label>
-                <input type="text" name="zip_code" class="form-control">
+                <input type="text" name="zip_code" class="form-control" required>
                 @if ($errors->has('zip_code'))
                     <div class="text-danger">{{ $errors->first('zip_code') }}</div>
                 @endif
@@ -164,10 +165,11 @@
                     <div class="payment-box">
                         <div class="payment-method">
 
-              <p>
-                <input type="radio" class="pay_method" id="stripe" name="payment_method" value="Stripe">
-                 <label for="stripe">Midtrans</label>
-                   </p>
+            <p>
+                <input type="radio" class="pay_method" id="cash" checked name="payment_method" value="Cash">
+                 <label for="cash">Cash</label>
+                 <span>Need manual confirmation on reservation</span>
+            </p>
 
           <div id="stripe_pay" class="d-none">
                  <br>
@@ -233,56 +235,6 @@ $(document).ready(function () {
 
 
 $(function() {
-    var $form = $(".require-validation");
-    $('form.require-validation').bind('submit', function(e) {
-
-          var pay_method = $('input[name="payment_method"]:checked').val();
-          if (pay_method == undefined){
-                alert('Please select a payment method');
-                return false;
-          }else if(pay_method == 'COD'){
-
-          }else{
-                document.getElementById('myButton').disabled = true;
-
-                var $form = $(".require-validation"),
-                        inputSelector = ['input[type=email]', 'input[type=password]',
-                              'input[type=text]', 'input[type=file]',
-                              'textarea'].join(', '),
-                        $inputs       = $form.find('.required').find(inputSelector),
-                        $errorMessage = $form.find('div.error'),
-                        valid         = true;
-                $errorMessage.addClass('hide');
-
-                $('.has-error').removeClass('has-error');
-                $inputs.each(function(i, el) {
-                      var $input = $(el);
-                      if ($input.val() === '') {
-                            $input.parent().addClass('has-error');
-                            $errorMessage.removeClass('hide');
-                            e.preventDefault();
-                      }
-                });
-
-                if (!$form.data('cc-on-file')) {
-
-                      e.preventDefault();
-                      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-                      Stripe.createToken({
-                            number: $('.card-number').val(),
-                            cvc: $('.card-cvc').val(),
-                            exp_month: $('.card-expiry-month').val(),
-                            exp_year: $('.card-expiry-year').val()
-                      }, stripeResponseHandler);
-                }
-          }
-
-
-
-    });
-
-
-
     function stripeResponseHandler(status, response) {
           if (response.error) {
 
