@@ -20,15 +20,11 @@ class FrontendRoomController extends Controller
 
     public function BookingSeach(Request $request)
     {
-        $bookings = Booking::whereBetween('check_in', [$request->check_in, $request->check_out])
-                            ->whereBetween('check_out', [$request->check_in, $request->check_out])
-                            ->whereHas('assign_rooms')
-                            ->get();
-        $rooms = new Room();
-        if ($bookings->count() > 0) {
-            $rooms = $rooms->whereNotIn('id', $bookings->pluck('room_id'));
-        }
-        $rooms = $rooms->get();
+        $bookings = Booking::where(function($q) use($request) {
+            return $q->whereBetween('check_in', [$request->check_in, $request->check_out])
+                    ->orWhereBetween('check_out', [$request->check_in, $request->check_out]);
+        })->get();
+        $rooms = Room::all();
         $check_date_booking_ids = $bookings->pluck('id');
 
         $check_in = $request->get('check_in');
@@ -63,8 +59,10 @@ class FrontendRoomController extends Controller
         }
 
         $roomBookings = $room->bookings()
-                            ->whereNotBetween('check_in', [$request->check_in, $request->check_out])
-                            ->whereNotBetween('check_out', [$request->check_in, $request->check_out])
+                            ->where(function($q) use($request) {
+                                return $q->whereNotBetween('check_in', [$request->check_in, $request->check_out])
+                                        ->orWhereNotBetween('check_out', [$request->check_in, $request->check_out]);
+                            })
                             ->doesntHave('assign_rooms')
                             ->get()
                             ->reduce(function(int $carry, $item) {

@@ -18,6 +18,10 @@ class RoomNumber extends Model
         return $this->hasOne(BookingRoomList::class, 'room_number_id')->latest();
     }
 
+    public function bookings() {
+        return $this->belongsToMany(Booking::class, 'booking_room_lists');
+    }
+
     public function room()
     {
         return $this->belongsTo(Room::class, 'rooms_id');

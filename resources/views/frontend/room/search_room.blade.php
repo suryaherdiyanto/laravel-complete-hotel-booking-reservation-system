@@ -41,7 +41,7 @@
 
 
 
-            @if ($av_room > 0 && old('persion') <= $item->total_adult)
+            @if ($av_room > 0 && request('persion') <= $item->total_adult)
 
             <div class="col-lg-4 col-md-6">
                 <div class="room-card">
