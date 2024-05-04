@@ -85,6 +85,7 @@ class BookingController extends Controller
     public function CheckoutStore(Request $request)
     {
         $booking = Booking::find($request->booking_id);
+        $booking->email = $request->email;
         $booking->name = $request->name;
         $booking->phone = $request->phone;
         $booking->country = $request->country;
