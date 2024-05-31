@@ -11,7 +11,11 @@ class UserController extends Controller
 {
     public function Index(){
         return view('frontend.index');
-    }// End Method 
+    }// End Method
+
+    public function About(){
+        return view('frontend.about');
+    }
 
     public function UserProfile(){
 
@@ -19,7 +23,7 @@ class UserController extends Controller
         $profileData = User::find($id);
         return view('frontend.dashboard.edit_profile',compact('profileData'));
 
-    }// End Method 
+    }// End Method
 
     public function UserStore(Request $request){
 
@@ -33,7 +37,7 @@ class UserController extends Controller
         if($request->file('photo')){
             $file = $request->file('photo');
             @unlink(public_path('upload/user_images/'.$data->photo));
-            $filename = date('YmdHi').$file->getClientOriginalName();  
+            $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('upload/user_images'),$filename);
             $data['photo'] = $filename;
 
@@ -47,7 +51,7 @@ class UserController extends Controller
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function UserLogout(Request $request){
@@ -75,7 +79,7 @@ class UserController extends Controller
 
     public function ChangePasswordStore(Request $request){
 
-        // Validation 
+        // Validation
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed'
@@ -87,25 +91,24 @@ class UserController extends Controller
                 'message' => 'Old Password Does not Match!',
                 'alert-type' => 'error'
             );
-    
+
             return back()->with($notification);
 
         }
 
-        /// Update The New Password 
+        /// Update The New Password
         User::whereId(auth::user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
-        
+
         $notification = array(
             'message' => 'Password Change Successfully',
             'alert-type' => 'success'
         );
 
-        return back()->with($notification); 
+        return back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
 }
- 

@@ -1,5 +1,5 @@
 @php
-    $setting = App\Models\SiteSetting::find(1);
+    $setting = App\Models\SiteSetting::first();
 @endphp
 
 
@@ -30,27 +30,14 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="about.html" class="nav-link">
+                            <a href="{{ url('/about') }}" class="nav-link">
                                 About
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                               Restaurant
-                            </a>
-
                         </li>
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                               Gallery
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                Blog
                             </a>
 
                         </li>
@@ -65,7 +52,7 @@
                             <ul class="dropdown-menu">
                                 @foreach ($room  as $item)
                                 <li class="nav-item">
-                                    <a href="room.html" class="nav-link">
+                                    <a href="{{ url('room/details/'.$item->id) }}" class="nav-link">
                                         {{ $item['type']['name'] }}
                                     </a>
                                 </li>

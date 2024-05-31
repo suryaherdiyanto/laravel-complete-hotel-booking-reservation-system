@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\RoleController;
 //     return view('welcome');
 // });
 Route::get('/', [UserController::class, 'Index']);
+Route::get('/about', [UserController::class, 'About']);
 
 
 Route::get('/dashboard', function () {
