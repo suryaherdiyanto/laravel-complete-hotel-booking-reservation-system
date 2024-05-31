@@ -18,6 +18,12 @@ class FrontendRoomController extends Controller
         return view('frontend.room.room_details', compact('roomdetails', 'facility', 'otherRooms'));
     }
 
+    public function AllFrontendRoomList()
+    {
+        $rooms = Room::all();
+        return view('frontend.room.all_rooms', compact('rooms'));
+    }
+
     public function BookingSeach(Request $request)
     {
         $bookings = Booking::where(function($q) use($request) {
