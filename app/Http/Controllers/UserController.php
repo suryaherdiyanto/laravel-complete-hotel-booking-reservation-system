@@ -30,6 +30,11 @@ class UserController extends Controller
         return view('frontend.gallery.show_gallery', compact('gallery'));
     }
 
+    public function Contact()
+    {
+        return view('frontend.contact');
+    }
+
     public function UserProfile(){
 
         $id = Auth::user()->id;

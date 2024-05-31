@@ -62,7 +62,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/contact') }}" class="nav-link {{ (Str::contains(url()->current(), 'contact')) ? 'active':'' }}">
                                 Contact
                             </a>
                         </li>
