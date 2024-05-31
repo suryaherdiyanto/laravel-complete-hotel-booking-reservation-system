@@ -24,19 +24,19 @@
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
-                            <a href="{{ url('/') }}" class="nav-link active">
+                            <a href="{{ url('/') }}" class="nav-link {{ (url()->current() === env('APP_URL')) ? 'active':'' }}">
                                 Home
                             </a>
 
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/about') }}" class="nav-link">
+                            <a href="{{ url('/about') }}" class="nav-link {{ (Str::contains(url()->current(), 'about')) ? 'active':'' }}">
                                 About
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url('/gallery') }}" class="nav-link">
                               Gallery
                             </a>
 

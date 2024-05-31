@@ -22,24 +22,21 @@
 <div class="gallery-area pt-100 pb-70">
     <div class="container">
         <div class="tab gallery-tab">
-            
+
 
             <div class="tab_content current active pt-45">
                 <div class="tabs_item current">
                     <div class="gallery-tab-item">
                         <div class="gallery-view">
                             <div class="row">
-                                
-                @foreach ($gallery as $item) 
+
+                @foreach ($gallery as $item)
                 <div class="col-lg-4 col-sm-6">
                     <div class="single-gallery">
-                        <img src="{{ asset($item->photo_name) }}" alt="Images">
-                        <a href="{{ asset($item->photo_name) }}" class="gallery-icon">
-                            <i class='bx bx-plus'></i>
-                        </a>
+                        <img src="{{ asset($item) }}" alt="Images">
                     </div>
-                </div> 
-                @endforeach 
+                </div>
+                @endforeach
 
 
                             </div>
@@ -47,7 +44,7 @@
                     </div>
                 </div>
 
-              
+
 
 
             </div>
@@ -55,6 +52,6 @@
     </div>
 </div>
 <!-- Gallery Area End -->
- 
+
 
 @endsection

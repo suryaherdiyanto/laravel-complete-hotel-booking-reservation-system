@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\RoleController;
 // });
 Route::get('/', [UserController::class, 'Index']);
 Route::get('/about', [UserController::class, 'About']);
+Route::get('/gallery', [UserController::class, 'Gallery']);
 
 
 Route::get('/dashboard', function () {
