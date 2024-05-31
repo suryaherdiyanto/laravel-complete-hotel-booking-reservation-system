@@ -31,7 +31,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="room-card">
                     <a href="{{ url('room/details/'.$item->id) }}">
-                        <img src="{{ asset( 'upload/roomimg/'.$item->image ) }}" alt="Images" style="width: 550px; height:300px;">
+                        <img src="{{ $room->imageUrl() }}" alt="Images" style="width: 550px; height:300px;">
                     </a>
                     <div class="content">
                         <h6><a href="{{ url('room/details/'.$item->id) }}">{{ $item['type']['name'] }}</a></h6>
@@ -39,13 +39,6 @@
                             <li class="text-color">IDR {{ number_format($item->price, 2) }}</li>
                             <li class="text-color">Per Night</li>
                         </ul>
-                        <div class="rating text-color">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star-half'></i>
-                        </div>
                     </div>
                 </div>
             </div>
