@@ -14,7 +14,7 @@
                         <option>Deutsch</option>
                         <option>Português</option>
                         <option>简体中文</option>
-                    </select>	
+                    </select>
                 </div>
             </div>
 
@@ -23,13 +23,13 @@
                     <ul>
                         <li>
                             <i class='bx bx-home-alt'></i>
-                            <a href="#">{{ $setting->address }}</a>
+                            <a href="#">{{ $setting?->address }}</a>
                         </li>
                         <li>
                             <i class='bx bx-phone-call'></i>
-                            <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                            <a href="tel:{{ $setting?->phone }}">{{ $setting?->phone }}</a>
                         </li>
-  
+
   @auth
 
   <li>
@@ -53,9 +53,9 @@
     <i class='bx bxs-user-rectangle'></i>
     <a href="{{ route('register') }}">Register</a>
 </li>
-      
+
   @endauth
-                       
+
 
                     </ul>
                 </div>

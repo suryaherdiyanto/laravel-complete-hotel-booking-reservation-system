@@ -7,8 +7,8 @@
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="{{ url('/') }}" class="logo">
-            <img src="{{ $setting->imageUrl() }}" width="120" class="logo-one" alt="Logo">
-            <img src="{{ $setting->imageUrl() }}" width="120" class="logo-two" alt="Logo">
+            <img src="{{ $setting?->imageUrl() }}" width="120" class="logo-one" alt="Logo">
+            <img src="{{ $setting?->imageUrl() }}" width="120" class="logo-two" alt="Logo">
         </a>
     </div>
 
@@ -17,8 +17,8 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light ">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ $setting->imageUrl() }}" width="120" class="logo-one" alt="Logo">
-                    <img src="{{ $setting->imageUrl() }}" width="120" class="logo-two" alt="Logo">
+                    <img src="{{ $setting?->imageUrl() }}" width="120" class="logo-one" alt="Logo">
+                    <img src="{{ $setting?->imageUrl() }}" width="120" class="logo-two" alt="Logo">
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
