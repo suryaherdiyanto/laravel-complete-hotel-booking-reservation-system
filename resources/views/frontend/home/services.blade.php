@@ -1,8 +1,8 @@
 <div class="services-area-three pt-100 pb-70 section-bg">
     <div class="container">
         <div class="section-title text-center">
-            <span class="sp-color">Our Services</span>
-            <h2>Our Services on the Global Market for Our Client's Reservation</h2>
+            <span class="sp-color">Servis Kami</span>
+            <h2>Layanan Kami di Pasar Global untuk Reservasi Klien Kami</h2>
         </div>
 
         <div class="row pt-45">
@@ -10,12 +10,11 @@
                 <div class="service-item-two">
                     <i class="flaticon-hotel"></i>
                     <div class="content">
-                        <h3><a href="service-details.html">Hotel Room Reservation into the Desire Places</a></h3>
+                        <h3>Reservasi Kamar Hotel ke Tempat yang Diinginkan</h3>
                         <p>
-                            You can easily reserve a hotel room in a good place as you want. This will be able to make good feelings. 
-                            This will be really effective for us and all & all of the customers & clients.
+                            Anda dapat dengan mudah memesan kamar hotel di tempat yang Anda inginkan. Ini akan dapat memberikan perasaan yang baik.
+                            Ini akan sangat efektif bagi kami dan semua pelanggan serta klien.
                         </p>
-                        <a href="service-details.html" class="read-btn">Read More</a>
                     </div>
                 </div>
             </div>
@@ -24,12 +23,10 @@
                 <div class="service-item-two">
                     <i class="flaticon-resort"></i>
                     <div class="content">
-                        <h3><a href="service-details.html">Resort Reservation Into the Good and Suitable Place</a></h3>
+                        <h3>Reservasi Resor ke Tempat yang Baik dan Sesuai</h3>
                         <p>
-                            You can easily reserve a hotel room in a good place as you want. This will be able to make good feelings. 
-                            This will be really effective for us and all & all of the customers & clients.
+                            Anda dapat dengan mudah memesan kamar hotel di tempat yang Anda inginkan. Ini akan dapat memberikan perasaan yang baik. Ini akan sangat efektif bagi kami serta semua pelanggan dan klien.
                         </p>
-                        <a href="service-details.html" class="read-btn">Read More</a>
                     </div>
                 </div>
             </div>
@@ -38,12 +35,10 @@
                 <div class="service-item-two">
                     <i class="flaticon-buildings"></i>
                     <div class="content">
-                        <h3><a href="service-details.html">Weeding Hall Reservation in the Suitable and Good Place</a></h3>
+                        <h3>Reservasi Aula Pernikahan di Tempat yang Sesuai dan Baik</h3>
                         <p>
-                            You can easily reserve a hotel room in a good place as you want. This will be able to make good feelings. 
-                            This will be really effective for us and all & all of the customers & clients.
+                            Anda dapat dengan mudah memesan kamar hotel di tempat yang Anda inginkan. Ini akan dapat memberikan perasaan yang baik. Ini akan sangat efektif bagi kami serta semua pelanggan dan klien.
                         </p>
-                        <a href="service-details.html" class="read-btn">Read More</a>
                     </div>
                 </div>
             </div>
@@ -52,12 +47,10 @@
                 <div class="service-item-two">
                     <i class="flaticon-businessmen"></i>
                     <div class="content">
-                        <h3><a href="service-details.html">Conference Room Reservation in the Suitable and Good Place</a></h3>
+                        <h3>Reservasi Ruang Konferensi di Tempat yang Sesuai dan Baik</h3>
                         <p>
-                            You can easily reserve a hotel room in a good place as you want. This will be able to make good feelings. 
-                            This will be really effective for us and all & all of the customers & clients.
+                            Anda dapat dengan mudah memesan kamar hotel di tempat yang Anda inginkan. Ini akan memberikan perasaan yang baik. Ini akan sangat efektif bagi kami serta semua pelanggan dan klien.
                         </p>
-                        <a href="service-details.html" class="read-btn">Read More</a>
                     </div>
                 </div>
             </div>

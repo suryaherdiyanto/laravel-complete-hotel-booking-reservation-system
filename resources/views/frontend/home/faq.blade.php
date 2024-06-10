@@ -4,9 +4,9 @@
             <div class="col-lg-6">
                 <div class="faq-content faq-content-bg2">
                     <div class="section-title">
-                        <span class="sp-color">FEEL FREE TO ASK QUESTION</span>
-                        <h2>Let's Start a Free of Questions and Get a Quick Support</h2>
-                        <p>We are the agency who always gives you a priority on the free of question and you can easily make a question on the bunch.</p>
+                        <span class="sp-color">Jangan ragu untuk bertanya.</span>
+                        <h2>Ayo Mulai dengan Bebas Bertanya dan Dapatkan Dukungan Cepat.</h2>
+                        <p>Kami adalah agensi yang selalu memberikan prioritas pada pertanyaan bebas, dan Anda dapat dengan mudah mengajukan pertanyaan dalam jumlah banyak.</p>
                     </div>
 
                     <div class="faq-accordion">
@@ -14,14 +14,12 @@
                             <li class="accordion-item">
                                 <a class="accordion-title" href="javascript:void(0)">
                                     <i class='bx bx-plus'></i>
-                                    How I Will Book a Room or Resort?
+                                    Bagaimana cara memesan kamar di hotel ini?
                                 </a>
 
                                 <div class="accordion-content">
-                                    <p> 
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat,
-                                        dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. Curabitur leo nibh, ultrices 
-                                        vel ultricies eu, vulputate at felis.
+                                    <p>
+                                        Anda dapat memesan kamar melalui situs web kami dengan mengklik tombol "Book Now" dan mengikuti langkah-langkah yang tersedia. Anda juga dapat menghubungi kami melalui telepon atau email untuk bantuan lebih lanjut.
                                     </p>
                                 </div>
                             </li>
@@ -29,14 +27,12 @@
                             <li class="accordion-item">
                                 <a class="accordion-title" href="javascript:void(0)">
                                     <i class='bx bx-plus'></i>
-                                    How I Will Be Able to Add on the Admin Portal? 
+                                    Apakah harga kamar sudah termasuk sarapan?
                                 </a>
 
                                 <div class="accordion-content">
-                                    <p> 
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat,
-                                        dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. Curabitur leo nibh, ultrices 
-                                        vel ultricies eu, vulputate at felis.
+                                    <p>
+                                        Ya, semua harga kamar kami sudah termasuk sarapan untuk dua orang. Jika Anda menginap dengan lebih banyak orang, biaya tambahan untuk sarapan akan berlaku.
                                     </p>
                                 </div>
                             </li>
@@ -44,14 +40,12 @@
                             <li class="accordion-item">
                                 <a class="accordion-title" href="javascript:void(0)">
                                     <i class='bx bx-plus'></i>
-                                    What are the Benefits of These Agencies?
+                                    Apakah hotel menyediakan layanan antar-jemput bandara?
                                 </a>
 
                                 <div class="accordion-content">
-                                    <p> 
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat,
-                                        dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. Curabitur leo nibh, ultrices 
-                                        vel ultricies eu, vulputate at felis.
+                                    <p>
+                                        Untuk saat ini belum menyediakan layanan antar-jemput bandara. Namun, kami dapat membantu Anda mengatur transportasi dari bandara ke hotel dengan biaya tambahan.
                                     </p>
                                 </div>
                             </li>
@@ -59,14 +53,12 @@
                             <li class="accordion-item">
                                 <a class="accordion-title active" href="javascript:void(0)">
                                     <i class='bx bx-plus'></i>
-                                    How I Will Make Payment for Room Book?
+                                    Apakah hotel menyediakan akses Wi-Fi gratis?
                                 </a>
 
                                 <div class="accordion-content show">
-                                    <p> 
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat,
-                                        dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. Curabitur leo nibh, ultrices 
-                                        vel ultricies eu, vulputate at felis.
+                                    <p>
+                                        Ya, kami menyediakan akses Wi-Fi gratis di seluruh area hotel, termasuk di kamar tamu dan area umum.
                                     </p>
                                 </div>
                             </li>

@@ -76,16 +76,9 @@
 @include('frontend.home.services')
 <!-- Services Area Three End -->
 
-<!-- Testimonials Area Three -->
-@include('frontend.home.testimonials')
-<!-- Testimonials Area Three End -->
-
 <!-- FAQ Area -->
 @include('frontend.home.faq')
 <!-- FAQ Area End -->
 
-<!-- Blog Area -->
-@include('frontend.home.blog')
-<!-- Blog Area End -->
 
 @endsection
