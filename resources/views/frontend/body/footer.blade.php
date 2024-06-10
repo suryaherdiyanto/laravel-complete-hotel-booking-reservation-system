@@ -9,8 +9,8 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <a href="index.html">
-                                <img src="{{ asset($setting?->imageUrl()) }}" width="92" alt="Images">
+                            <a href="{{ url('/') }}">
+                                <h2 style="color: #fff">Hotel Ranaka Ruteng</h2>
                             </a>
                         </div>
                         <ul class="footer-list-contact">
