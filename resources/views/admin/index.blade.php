@@ -1,5 +1,5 @@
 @extends('admin.admin_dashboard')
-@section('admin') 
+@section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -38,9 +38,8 @@
            <div class="card-body">
                <div class="d-flex align-items-center">
                    <div>
-                       <p class="mb-0 text-secondary">Pening Booking</p>
+                       <p class="mb-0 text-secondary">Pending Booking</p>
                        <h4 class="my-1 text-danger">{{ count($pending) }}</h4>
-                       <p class="mb-0 font-13">+5.4% from last week</p>
                    </div>
                    <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i class='bx bxs-wallet'></i>
                    </div>
@@ -55,7 +54,6 @@
                    <div>
                        <p class="mb-0 text-secondary">Complete Booking</p>
                        <h4 class="my-1 text-success">{{ count($complete) }}</h4>
-                       <p class="mb-0 font-13">-4.5% from last week</p>
                    </div>
                    <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-bar-chart-alt-2' ></i>
                    </div>
@@ -70,14 +68,13 @@
                    <div>
                        <p class="mb-0 text-secondary">Total Price</p>
                        <h4 class="my-1 text-warning">${{ $totalPrice  }}</h4>
-                       <p class="mb-0 font-13">+8.4% from last week</p>
                    </div>
                    <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i class='bx bxs-group'></i>
                    </div>
                </div>
            </div>
         </div>
-      </div> 
+      </div>
     </div><!--end row-->
 
     <div class="row">
@@ -88,18 +85,18 @@
                     <div>
                         <h6 class="mb-0">Sales Overview</h6>
                     </div>
-                     
+
                 </div>
             </div>
-            
+
               <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
-                 
+
                <canvas id="bookingChart"></canvas>
-               
+
               </div>
           </div>
        </div>
-       
+
 
 
 
@@ -111,7 +108,7 @@
                 <div>
                     <h6 class="mb-0">Recent Booking</h6>
                 </div>
-                
+
             </div>
         </div>
 
@@ -127,11 +124,11 @@
                           <th>Room</th>
                           <th>Check IN/Out</th>
                           <th>Total Room</th>
-                          <th>Guest</th> 
+                          <th>Guest</th>
                       </tr>
                   </thead>
                   <tbody>
-                     @foreach ($allData as $key=> $item ) 
+                     @foreach ($allData as $key=> $item )
                       <tr>
                           <td>{{ $key+1 }}</td>
                           <td> <a href="{{ route('edit_booking',$item->id) }}"> {{ $item->code }} </a></td>
@@ -141,21 +138,21 @@
                           <td> <span class="badge bg-primary">{{ $item->check_in }}</span>   <span class="badge bg-warning text-dark">{{ $item->check_out }}</span> </td>
                           <td> {{ $item->number_of_rooms }} </td>
                           <td> {{ $item->persion }} </td>
-                    
-                           
+
+
                       </tr>
-                      @endforeach 
-                    
+                      @endforeach
+
                   </tbody>
-               
+
               </table>
           </div>
       </div>
 
 
         </div>
- 
-         
+
+
 </div>
 
 
@@ -165,7 +162,7 @@
 
   // Extract the required data from the bookings
   var labels = bookings.map(function(booking) {
-      return booking.check_in; 
+      return booking.check_in;
   });
 
   var data = bookings.map(function(booking) {
