@@ -83,7 +83,7 @@
                         <ul>
 
                             <li>
-                               <b> Basic : ${{ $roomdetails->price }}/Night/Room</b>
+                               <b> Basic : Rp.{{ number_format($roomdetails->price) }}/Night/Room</b>
                             </li>
 
                         </ul>

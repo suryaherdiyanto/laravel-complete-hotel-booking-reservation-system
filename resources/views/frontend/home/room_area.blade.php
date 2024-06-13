@@ -26,7 +26,7 @@
                                  <h3>
                                      <a href="{{ url('room/details/'.$item->id) }}">{{ $item['type']['name'] }}</a>
                                 </h3>
-                                <span>{{ $item->price }} / Per Night </span>
+                                <span>Rp.{{ number_format($item->price) }} / Per Night </span>
                                 <p>{{ $item->short_desc }}</p>
                                 <ul>
                    <li><i class='bx bx-user'></i> {{ $item->room_capacity }} Person</li>
