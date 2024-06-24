@@ -33,7 +33,8 @@
                 @foreach ($gallery as $item)
                 <div class="col-lg-4 col-sm-6">
                     <div class="single-gallery">
-                        <img src="{{ asset($item) }}" alt="Images">
+                        <img src="{{ asset($item['url']) }}" alt="Images">
+                        <a href="#" class="gallery-icon" style="width: auto; height: auto">{{ $item['title'] }}</a>
                     </div>
                 </div>
                 @endforeach

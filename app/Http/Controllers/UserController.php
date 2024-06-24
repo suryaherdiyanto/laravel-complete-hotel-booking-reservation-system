@@ -20,12 +20,30 @@ class UserController extends Controller
     public function Gallery()
     {
         $gallery = [
-            'frontend/assets/img/g1.jpeg',
-            'frontend/assets/img/g2.jpeg',
-            'frontend/assets/img/g3.jpeg',
-            'frontend/assets/img/g4.jpeg',
-            'frontend/assets/img/g5.jpeg',
-            'frontend/assets/img/g6.jpeg',
+            [
+                'title' => 'Lobby',
+                'url' => 'frontend/assets/img/g1.jpeg',
+            ],
+            [
+                'title' => 'Restaurant',
+                'url' => 'frontend/assets/img/g2.jpeg',
+            ],
+            [
+                'title' => 'Single Bedroom',
+                'url' => 'frontend/assets/img/g3.jpeg',
+            ],
+            [
+                'title' => 'Twin Bedroom',
+                'url' => 'frontend/assets/img/g4.jpeg',
+            ],
+            [
+                'title' => 'Double Bedroom',
+                'url' => 'frontend/assets/img/g5.jpeg',
+            ],
+            [
+                'title' => 'Double Bedroom Standard',
+                'url' => 'frontend/assets/img/g6.jpeg',
+            ],
         ];
         return view('frontend.gallery.show_gallery', compact('gallery'));
     }

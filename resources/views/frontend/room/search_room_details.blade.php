@@ -61,7 +61,7 @@
             <div class="form-group">
                 <label>Numbers of Persons</label>
                 <select class="form-control" name="persion" id="nmbr_person">
-                @for ($i = 1; $i <= 4; $i++)
+                @for ($i = 1; $i <= 2; $i++)
       <option {{ request('persion') == $i ? 'selected' : '' }} value="0{{ $i }}" >0{{ $i }} </option>
               @endfor
                 </select>
@@ -137,7 +137,7 @@
                         <ul>
 
                             <li>
-                               <b> Basic : ${{ $roomdetails->price }}/Night/Room</b>
+                               <b> Basic : IDR {{ number_format($roomdetails->price) }}/Night/Room</b>
                             </li>
 
                         </ul>

@@ -56,9 +56,6 @@
                                         <select class="form-control" name="persion">
                                             <option>01</option>
                                             <option>02</option>
-                                            <option>03</option>
-                                            <option>04</option>
-                                            <option>05</option>
                                         </select>
                                     </div>
                                 </div>
